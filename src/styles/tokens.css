@@ -1,0 +1,44 @@
+:root {
+  /* Surfaces */
+  --bg: #0a1220;
+  --bg-deep: #070d18;
+  --panel: #101b2d;
+  --panel-raised: #142238;
+  --line: #1e2c44;
+  --line-strong: #2b3d5c;
+
+  /* Text */
+  --text: #e6edf6;
+  --text-soft: #c3cedd;
+  --muted: #8a9bb4;
+  --faint: #5d6f8b;
+
+  /* Signals */
+  --amber: #f5a524;
+  --amber-soft: rgba(245, 165, 36, 0.14);
+  --amber-glow: rgba(245, 165, 36, 0.35);
+  --teal: #3ddc97;
+  --teal-soft: rgba(61, 220, 151, 0.12);
+  --slate-signal: #9fb3d1;
+
+  /* Type */
+  --font-display: 'Instrument Serif', 'Times New Roman', serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.125rem;
+  --step-2: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --step-3: clamp(2.25rem, 1.6rem + 2.6vw, 3.25rem);
+  --step-hero: clamp(3.25rem, 1.8rem + 6.4vw, 7rem);
+
+  /* Layout */
+  --gutter: clamp(16px, 4vw, 40px);
+  --max: 1180px;
+  --radius: 4px;
+  --bar-h: 56px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
