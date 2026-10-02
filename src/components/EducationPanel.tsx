@@ -4,7 +4,7 @@ import { Section } from './Section'
 
 export function EducationPanel() {
   return (
-    <Section id="education" index="05" title="Education" subtitle="Undergraduate, Class of 2029">
+    <Section id="education" index="05 · Education" title="Education" subtitle="Undergraduate, Class of 2029">
       <div className="edu panel rv" style={stagger(1)}>
         <div className="edu__main">
           <h3 className="edu__school">{education.school}</h3>

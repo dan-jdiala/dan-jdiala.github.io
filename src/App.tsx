@@ -10,11 +10,11 @@ import { TelemetryTiles } from './components/TelemetryTiles'
 export default function App() {
   return (
     <>
-      <a className="skip-link" href="#systems">
-        Skip to projects
+      <a className="skip-link" href="#main">
+        Skip to content
       </a>
       <StatusBar />
-      <main>
+      <main id="main" tabIndex={-1}>
         <Hero />
         <TelemetryTiles />
         <Systems />

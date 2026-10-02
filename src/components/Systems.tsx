@@ -1,6 +1,7 @@
-import { systems, type SystemProject, type SystemStatus } from '../data/site'
+import { systems, type CaseNotes, type Stat, type SystemProject, type SystemStatus } from '../data/site'
 import { stagger } from '../lib/style'
 import { ArrowUpRightIcon, LockIcon } from './Icons'
+import { NewTab } from './NewTab'
 import { Section } from './Section'
 
 const statusLabel: Record<SystemStatus, string> = {
@@ -9,9 +10,16 @@ const statusLabel: Record<SystemStatus, string> = {
   'open-source': 'Open source',
 }
 
+const caseLabels: [keyof CaseNotes, string][] = [
+  ['problem', 'Problem'],
+  ['role', 'My role'],
+  ['challenge', 'Hardest part'],
+  ['limits', 'Limits'],
+]
+
 export function Systems() {
   return (
-    <Section id="systems" index="02" title="Systems" subtitle="Projects in production, in research, and in progress">
+    <Section id="systems" index="02 · Systems" title="Projects" subtitle="Live apps, research tooling, and work in progress">
       <div className="systems__grid">
         {systems.map((project, i) => (
           <SystemPanel key={project.id} project={project} index={i} />
@@ -56,8 +64,22 @@ function SystemPanel({ project, index }: { project: SystemProject; index: number
           </ul>
         </div>
 
-        {project.flagship && <FlagshipReadout />}
+        {project.stats && <FlagshipBoard name={project.name} stats={project.stats} />}
       </div>
+
+      <details className="case">
+        <summary className="case__summary mono">
+          How it works <span className="case__toggle" aria-hidden="true" />
+        </summary>
+        <dl className="case__list">
+          {caseLabels.map(([key, label]) => (
+            <div key={key} className="case__row">
+              <dt className="mono">{label}</dt>
+              <dd>{project.caseNotes[key]}</dd>
+            </div>
+          ))}
+        </dl>
+      </details>
 
       <div className="system__foot">
         <ul className="system__stack" aria-label="Tech stack">
@@ -71,7 +93,7 @@ function SystemPanel({ project, index }: { project: SystemProject; index: number
           {project.links.map((link) => (
             <a key={link.href} className="btn" href={link.href} target="_blank" rel="noreferrer">
               {link.label} <ArrowUpRightIcon />
-              <span className="visually-hidden"> (opens in a new tab)</span>
+              <NewTab />
             </a>
           ))}
           {project.note && (
@@ -85,18 +107,12 @@ function SystemPanel({ project, index }: { project: SystemProject; index: number
   )
 }
 
-// Pulse-Net's at-a-glance numbers, styled like a node status board.
-function FlagshipReadout() {
+// Flagship at-a-glance numbers, styled like a node status board.
+function FlagshipBoard({ name, stats }: { name: string; stats: Stat[] }) {
   const nodes = ['NA', 'EU', 'APAC', 'AFR', 'SA']
-  const stats = [
-    { value: '5', label: 'hospital nodes' },
-    { value: '16', label: 'pathogen classes' },
-    { value: 'ε 1.0', label: 'privacy budget' },
-    { value: '1,500+', label: 'tests in CI' },
-  ]
 
   return (
-    <div className="flagship" aria-label="Pulse-Net at a glance">
+    <div className="flagship" role="group" aria-label={`${name} at a glance`}>
       <div className="flagship__nodes" aria-hidden="true">
         {nodes.map((node, i) => (
           <span key={node} className="node" style={stagger(i)}>

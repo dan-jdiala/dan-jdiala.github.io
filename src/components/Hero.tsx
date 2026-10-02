@@ -1,6 +1,7 @@
 import { education, profile } from '../data/site'
 import { boot } from '../lib/style'
-import { ArrowDownIcon, MailIcon } from './Icons'
+import { ArrowDownIcon, GitHubIcon, LinkedInIcon, MailIcon } from './Icons'
+import { NewTab } from './NewTab'
 
 const readout = [
   { key: 'Location', value: profile.location },
@@ -36,15 +37,23 @@ export function Hero() {
         </p>
         <div className="hero-actions boot" style={boot(5)}>
           <a className="btn btn--primary" href="#systems">
-            View systems <ArrowDownIcon />
+            View projects <ArrowDownIcon />
+          </a>
+          <a className="btn" href={profile.links.linkedin} target="_blank" rel="noreferrer">
+            <LinkedInIcon /> LinkedIn
+            <NewTab />
+          </a>
+          <a className="btn" href={profile.links.github} target="_blank" rel="noreferrer">
+            <GitHubIcon /> GitHub
+            <NewTab />
           </a>
           <a className="btn" href={`mailto:${profile.email}`}>
-            <MailIcon /> {profile.email}
+            <MailIcon /> Email me
           </a>
         </div>
       </div>
 
-      <aside className="hero__readout panel boot" style={boot(4)} aria-label="Profile summary">
+      <div className="hero__readout panel boot" style={boot(4)} role="group" aria-label="Profile summary">
         <div className="readout__head mono">
           <span>SYS · PROFILE</span>
           <span className="readout__ok">
@@ -62,15 +71,15 @@ export function Hero() {
         <figure className="monitor" aria-hidden="true">
           <svg viewBox="0 0 340 84" preserveAspectRatio="none">
             <line className="monitor__threshold" x1="0" x2="340" y1="34" y2="34" />
-            <path className="monitor__trace" d={trace} pathLength={1} />
+            <path className="monitor__trace" d={trace} />
             <circle className="monitor__alert" cx="300" cy="24" r="4" />
           </svg>
           <figcaption className="mono">
-            <span>SIGNAL MONITOR</span>
+            <span>SIGNAL MONITOR · ILLUSTRATIVE</span>
             <span className="monitor__flag">THRESHOLD CROSSED</span>
           </figcaption>
         </figure>
-      </aside>
+      </div>
     </section>
   )
 }

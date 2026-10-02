@@ -16,7 +16,9 @@ export function Section({ id, index, title, subtitle, children }: SectionProps) 
     <section className="section container" id={id} aria-labelledby={`${id}-title`}>
       <div ref={ref} className={`reveal${visible ? ' is-visible' : ''}`}>
         <header className="section-head">
-          <span className="section-index">{index}</span>
+          <span className="section-index" aria-hidden="true">
+            {index}
+          </span>
           <h2 className="section-title" id={`${id}-title`}>
             {title}
           </h2>

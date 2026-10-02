@@ -2,12 +2,14 @@ import { profile } from '../data/site'
 import { useClock } from '../hooks/useClock'
 import { boot } from '../lib/style'
 import { GitHubIcon, LinkedInIcon, MailIcon } from './Icons'
+import { NewTab } from './NewTab'
 
 const nav = [
-  { href: '#systems', label: 'Systems' },
-  { href: '#log', label: 'Log' },
-  { href: '#capabilities', label: 'Capabilities' },
+  { href: '#systems', label: 'Projects' },
+  { href: '#log', label: 'Experience' },
+  { href: '#capabilities', label: 'Skills' },
   { href: '#education', label: 'Education' },
+  { href: '#contact', label: 'Contact' },
 ]
 
 export function StatusBar() {
@@ -35,17 +37,21 @@ export function StatusBar() {
         </nav>
 
         <div className="status-tools">
-          <span className="clock mono" aria-label={`Eastern Time ${time}`}>
+          <span className="clock mono" aria-hidden="true">
             <span className="clock__zone">ET</span> {time}
           </span>
           <a className="icon-link" href={`mailto:${profile.email}`} aria-label="Email">
             <MailIcon />
           </a>
-          <a className="icon-link" href={profile.links.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <a className="icon-link" href={profile.links.linkedin} target="_blank" rel="noreferrer">
             <LinkedInIcon />
+            <span className="visually-hidden">LinkedIn</span>
+            <NewTab />
           </a>
-          <a className="icon-link" href={profile.links.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+          <a className="icon-link" href={profile.links.github} target="_blank" rel="noreferrer">
             <GitHubIcon />
+            <span className="visually-hidden">GitHub</span>
+            <NewTab />
           </a>
         </div>
       </div>

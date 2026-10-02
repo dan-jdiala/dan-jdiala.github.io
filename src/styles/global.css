@@ -133,8 +133,13 @@ a {
 }
 
 /* ---------- Section headers ---------- */
+/* Only the top: .container supplies the side gutters. */
 .section {
-  padding: clamp(56px, 9vw, 112px) 0 0;
+  padding-top: clamp(56px, 9vw, 112px);
+}
+
+main:focus {
+  outline: none;
 }
 .section-head {
   display: grid;
@@ -189,7 +194,7 @@ a {
   padding: 4px 10px;
   border-radius: 999px;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -220,7 +225,8 @@ a {
   border-radius: 50%;
   background: currentColor;
   box-shadow: 0 0 0 0 currentColor;
-  animation: pulse 2.4s var(--ease-out) infinite;
+  /* Two pulses on load, then still (WCAG 2.2.2). */
+  animation: pulse 2.4s var(--ease-out) 2;
   flex: none;
 }
 
@@ -336,8 +342,10 @@ a {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
 }
 

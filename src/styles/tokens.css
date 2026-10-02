@@ -1,4 +1,6 @@
 :root {
+  color-scheme: dark;
+
   /* Surfaces */
   --bg: #0a1220;
   --bg-deep: #070d18;
@@ -11,7 +13,7 @@
   --text: #e6edf6;
   --text-soft: #c3cedd;
   --muted: #8a9bb4;
-  --faint: #5d6f8b;
+  --faint: #7d8fa9;
 
   /* Signals */
   --amber: #f5a524;
