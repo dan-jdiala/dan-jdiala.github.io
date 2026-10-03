@@ -32,10 +32,7 @@ export function Footer() {
             <NewTab />
           </a>
         </div>
-        <p className="footer__email mono" style={stagger(3)}>
-          {profile.email}
-        </p>
-        <p className="footer__fine mono" style={stagger(4)}>
+        <p className="footer__fine mono" style={stagger(3)}>
           © {year} {profile.name}
         </p>
       </div>
