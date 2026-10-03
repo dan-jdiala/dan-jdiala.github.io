@@ -14,14 +14,6 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--bg);
-  /* Coordinate grid with a soft amber glow near the top. */
-  background-image:
-    radial-gradient(ellipse 80% 50% at 70% -10%, rgba(245, 165, 36, 0.08), transparent 60%),
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 100% 100%, 48px 48px, 48px 48px;
-  background-position: 0 0, -1px -1px, -1px -1px;
-  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font-body);
   font-size: var(--step-0);
@@ -30,13 +22,21 @@ body {
   overflow-x: hidden;
 }
 
-/* Fade the grid so it reads as texture, not lines. */
+/* Coordinate grid with a soft amber glow, faded so it reads as texture. It lives on a fixed
+   layer (not background-attachment: fixed, which iOS Safari ignores) so the lattice canvas
+   stays aligned with it everywhere. Layers listed top to bottom. */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(10, 18, 32, 0.55), rgba(10, 18, 32, 0.9));
+  background-image:
+    linear-gradient(180deg, rgba(10, 18, 32, 0.55), rgba(10, 18, 32, 0.9)),
+    radial-gradient(ellipse 80% 50% at 70% -10%, rgba(245, 165, 36, 0.08), transparent 60%),
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+  background-position: 0 0, 0 0, -1px -1px, -1px -1px;
   pointer-events: none;
 }
 

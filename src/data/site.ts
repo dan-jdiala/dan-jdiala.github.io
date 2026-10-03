@@ -177,17 +177,17 @@ export const systems: SystemProject[] = [
 export const moreProjects: MinorProject[] = [
   {
     name: 'File Reader',
-    description: 'The type command written in x86-64 assembly: opens a file and prints its contents, for Windows and macOS.',
+    description: 'A cat-style type command in x86-64 assembly: opens a file with Linux system calls and copies it to the terminal one byte at a time, with error handling. Built on the course starter template.',
     context: 'CS-104 course project',
     stack: ['x86-64 Assembly', 'Make'],
     link: { label: 'View code', href: 'https://github.com/dan-jdiala/cs-104-assembly-project' },
   },
   {
     name: 'Sphero Robot Obstacle Course',
-    description: 'Programmed a Sphero robot to run a measured obstacle course with a block program of timed rolls (heading, speed, distance). I wrote most of the project document, helped build the code blocks, and measured the course.',
+    description: 'Group project: programmed a Sphero robot to run a measured obstacle course with a block program of distance-based rolls (heading, speed, distance). I wrote most of the project document, helped build the code blocks, and measured the course.',
     context: 'Group project',
     stack: ['Sphero Edu', 'Block programming'],
-    link: { label: 'View code', href: 'https://github.com/satvikdhiman2025-cmd/Robot-project' },
+    link: { label: 'View group repo', href: 'https://github.com/satvikdhiman2025-cmd/Robot-project' },
   },
 ]
 

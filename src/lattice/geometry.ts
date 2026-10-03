@@ -25,15 +25,22 @@ export function nodePoints(width: number, height: number): Point[] {
 }
 
 // A signal path along grid lines: a short walk that mostly travels right, with occasional
-// turns up or down, never reversing. It stays within one line of where it started (and below
-// the header), so it moves through open space instead of wandering into the status bar.
-export function signalPath(startI: number, startJ: number, steps: number, width: number, height: number): Point[] {
+// turns, never reversing. It never drops below its start line (the open gap above a heading)
+// and rises at most one line, staying below the header.
+export function signalPath(
+  startI: number,
+  startJ: number,
+  steps: number,
+  width: number,
+  height: number,
+  allowRise = true,
+): Point[] {
   const maxI = Math.floor((width + 0.5) / CELL) - 1
   const maxJ = Math.floor((height + 0.5) / CELL) - 1
   let i = Math.min(Math.max(startI, 1), maxI)
   let j = Math.min(Math.max(startJ, 2), maxJ)
-  const minJ = Math.max(2, j - 1)
-  const bandMaxJ = Math.min(maxJ, j + 1)
+  const minJ = allowRise ? Math.max(2, j - 1) : j
+  const bandMaxJ = j
   const path: Point[] = [{ x: lineCoord(i), y: lineCoord(j) }]
   let last: 'h' | 'v' = 'v'
 
