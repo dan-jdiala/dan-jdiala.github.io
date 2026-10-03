@@ -188,9 +188,6 @@
   color: var(--text);
   font-size: 0.9375rem;
 }
-.readout__row dd.is-accent {
-  color: var(--amber);
-}
 
 .monitor {
   margin: 16px 0 0;

@@ -5,7 +5,6 @@ const readout = [
   { key: 'Education', value: `${education.school} · ’29` },
   { key: 'Focus', value: 'ML systems · Data · Web' },
   { key: 'Certified', value: 'Claude Certified Architect' },
-  { key: 'Available', value: 'Summer 2027', accent: true },
 ]
 
 // Decorative early-warning trace: a baseline that drifts, then spikes past the threshold.
@@ -45,7 +44,7 @@ export function Hero() {
           {readout.map((row) => (
             <div className="readout__row" key={row.key}>
               <dt className="mono">{row.key}</dt>
-              <dd className={row.accent ? 'is-accent' : undefined}>{row.value}</dd>
+              <dd>{row.value}</dd>
             </div>
           ))}
         </dl>
