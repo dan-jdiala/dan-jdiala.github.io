@@ -66,7 +66,7 @@ export type Education = {
 
 export const profile: Profile = {
   name: 'Daniel-John Diala',
-  role: 'Software Engineering @ Monmouth University · 4.0 GPA',
+  role: 'Software Engineering Student @ Monmouth University · 4.0 GPA',
   status: 'Undergraduate Student Researcher',
   summary:
     "I'm an undergraduate Software Engineering student who builds real-world projects end to end, from ML systems and data pipelines to websites, and I'm looking to eventually expand into mobile apps and hardware.",
@@ -80,7 +80,7 @@ export const profile: Profile = {
 export const telemetry: Telemetry[] = [
   { id: 'gpa', value: '4.0', label: 'GPA', detail: 'B.S. Software Engineering, Class of 2029' },
   { id: 'live', value: '2', label: 'live web apps', detail: 'Study app + GArel Playground, on AWS' },
-  { id: 'tests', value: '3,500+', label: 'automated tests', detail: 'pytest, Vitest, Playwright across projects' },
+  { id: 'commits', value: '860+', label: 'commits', detail: 'Pulse-Net, GArel research, and the study web app' },
   { id: 'ncl', value: 'Top 4%', label: 'NCL team rank', detail: '127 of 3,638 teams, Spring 2026' },
 ]
 
