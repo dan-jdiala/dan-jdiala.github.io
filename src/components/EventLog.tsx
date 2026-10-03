@@ -1,8 +1,7 @@
+import { useEffect, useRef } from 'react'
 import { events, type LogEvent } from '../data/site'
 import { stagger } from '../lib/style'
 import { Section } from './Section'
-
-const isPhone = typeof window !== 'undefined' && window.matchMedia('(max-width: 560px)').matches
 
 const kindLabel: Record<LogEvent['kind'], string> = {
   role: 'Role',
@@ -54,8 +53,14 @@ function Bullets({ items }: { items: string[] }) {
   )
 }
 
-// Entries with several bullets are expandable (roles start open); short entries show everything.
+// Entries with several bullets are expandable (roles start open, except on phones);
+// short entries show everything.
 function EntryBody({ event }: { event: LogEvent }) {
+  const detailsRef = useRef<HTMLDetailsElement>(null)
+  useEffect(() => {
+    if (detailsRef.current && window.matchMedia('(max-width: 560px)').matches) detailsRef.current.open = false
+  }, [])
+
   if (event.bullets.length <= 1) {
     return (
       <>
@@ -68,7 +73,7 @@ function EntryBody({ event }: { event: LogEvent }) {
   }
 
   return (
-    <details open={event.kind === 'role' && !isPhone}>
+    <details ref={detailsRef} open={event.kind === 'role'}>
       <summary className="log__summary">
         <EntryHeader event={event} />
         <span className="log__toggle mono" aria-hidden="true" />

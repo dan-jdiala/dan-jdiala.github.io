@@ -1,16 +1,20 @@
 import { useEffect, useRef, useState } from 'react'
 
-const supportsObserver = typeof window !== 'undefined' && 'IntersectionObserver' in window
-
 // Returns a ref and whether the element has scrolled into view (fires once).
+// Starts hidden on both server and client so prerendered HTML hydrates cleanly; the
+// hiding itself is CSS that only applies when scripting is enabled.
 export function useReveal<T extends HTMLElement>(threshold = 0.15) {
   const ref = useRef<T>(null)
-  // Without IntersectionObserver, show content immediately.
-  const [visible, setVisible] = useState(!supportsObserver)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     const node = ref.current
-    if (!node || !supportsObserver) return
+    if (!node) return
+    if (!('IntersectionObserver' in window)) {
+      // Very old browsers: show content right away.
+      queueMicrotask(() => setVisible(true))
+      return
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

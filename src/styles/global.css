@@ -287,11 +287,10 @@ main:focus {
   animation-delay: calc(var(--boot, 0) * 140ms);
 }
 
-/* Direct children of a .reveal block, plus nested items marked .rv, fade up in order of --i. */
+/* Direct children of a .reveal block, plus nested items marked .rv, fade up in order of --i.
+   Only when scripting runs: the prerendered page stays fully visible without JavaScript. */
 .reveal > *,
 .reveal .rv {
-  opacity: 0;
-  transform: translateY(18px);
   transition:
     opacity 0.8s var(--ease-out),
     transform 0.8s var(--ease-out),
@@ -299,10 +298,12 @@ main:focus {
     box-shadow 0.3s;
   transition-delay: calc(var(--i, 0) * 90ms);
 }
-.reveal.is-visible > *,
-.reveal.is-visible .rv {
-  opacity: 1;
-  transform: none;
+@media (scripting: enabled) {
+  .reveal:not(.is-visible) > *,
+  .reveal:not(.is-visible) .rv {
+    opacity: 0;
+    transform: translateY(18px);
+  }
 }
 
 @keyframes boot-in {
