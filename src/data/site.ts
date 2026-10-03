@@ -235,7 +235,7 @@ export const events: LogEvent[] = [
     title: 'National Cyber League (Spring 2026)',
     org: 'Monmouth University CyberHawks',
     period: 'Member since Sep 2025',
-    bullets: ['Team: top 4% (127 of 3,638). Individual: top 15% (1,011 of 7,011).'],
+    bullets: ['Team: top 4% (127 of 3,638). Individual: top 14.4% (1,011 of 7,011).'],
   },
   {
     id: 'ieee',

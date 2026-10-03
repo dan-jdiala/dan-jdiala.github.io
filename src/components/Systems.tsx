@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { moreProjects, systems, type Stat, type SystemProject, type SystemStatus } from '../data/site'
 import { stagger } from '../lib/style'
 import { ArrowUpRightIcon, LockIcon } from './Icons'
@@ -24,8 +25,12 @@ export function Systems() {
   )
 }
 
+const PHONE_FACTS = 2
+
 function SystemPanel({ project, index }: { project: SystemProject; index: number }) {
   const titleId = `sys-${project.id}`
+  const [expanded, setExpanded] = useState(false)
+  const extra = project.facts.length - PHONE_FACTS
 
   return (
     <article
@@ -52,11 +57,24 @@ function SystemPanel({ project, index }: { project: SystemProject; index: number
             {project.name}
           </h3>
           <p className="system__subtitle">{project.subtitle}</p>
-          <ul className="system__facts">
-            {project.facts.map((fact) => (
-              <li key={fact}>{fact}</li>
+          <ul className={`system__facts${expanded ? ' is-expanded' : ''}`} id={`${titleId}-facts`}>
+            {project.facts.map((fact, i) => (
+              <li key={fact} className={i >= PHONE_FACTS ? 'fact--extra' : undefined}>
+                {fact}
+              </li>
             ))}
           </ul>
+          {extra > 0 && (
+            <button
+              type="button"
+              className="facts-toggle mono"
+              aria-expanded={expanded}
+              aria-controls={`${titleId}-facts`}
+              onClick={() => setExpanded((e) => !e)}
+            >
+              {expanded ? 'Show less' : `Show ${extra} more`}
+            </button>
+          )}
         </div>
 
         {project.stats && <FlagshipBoard name={project.name} stats={project.stats} />}

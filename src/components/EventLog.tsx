@@ -2,6 +2,8 @@ import { events, type LogEvent } from '../data/site'
 import { stagger } from '../lib/style'
 import { Section } from './Section'
 
+const isPhone = typeof window !== 'undefined' && window.matchMedia('(max-width: 560px)').matches
+
 const kindLabel: Record<LogEvent['kind'], string> = {
   role: 'Role',
   cert: 'Certification',
@@ -66,7 +68,7 @@ function EntryBody({ event }: { event: LogEvent }) {
   }
 
   return (
-    <details open={event.kind === 'role'}>
+    <details open={event.kind === 'role' && !isPhone}>
       <summary className="log__summary">
         <EntryHeader event={event} />
         <span className="log__toggle mono" aria-hidden="true" />

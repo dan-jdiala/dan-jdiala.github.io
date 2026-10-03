@@ -1014,6 +1014,31 @@ details[open] .log__toggle::before {
   }
 }
 
+/* "Show more" for long project cards: only used on phones. */
+.facts-toggle {
+  display: none;
+}
+@media (max-width: 560px) {
+  .system__facts .fact--extra {
+    display: none;
+  }
+  .system__facts.is-expanded .fact--extra {
+    display: list-item;
+  }
+  .facts-toggle {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--amber);
+    font-size: 0.8125rem;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+  }
+}
+
 /* A lone half-width card in a two-column grid spans the row instead. */
 @media (min-width: 721px) and (max-width: 1080px) {
   .systems__grid > .system:last-child:nth-child(even),
