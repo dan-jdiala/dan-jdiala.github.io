@@ -23,6 +23,8 @@ export type SystemStatus = 'live' | 'active' | 'open-source'
 
 export type Stat = { value: string; label: string }
 
+export type Media = { src: string; still: string; alt: string; width: number; height: number; caption: string }
+
 export type SystemProject = {
   id: string
   name: string
@@ -35,7 +37,9 @@ export type SystemProject = {
   links: Link[]
   note?: string
   stats?: Stat[]
+  media?: Media
   flagship?: boolean
+  wide?: boolean
 }
 
 export type LogEvent = {
@@ -150,6 +154,15 @@ export const systems: SystemProject[] = [
       'Rule-based by design: no trained model, and no labeled accuracy evaluation yet.',
     ],
     links: [{ label: 'View code', href: 'https://github.com/dan-jdiala/sentiment-analysis-tool' }],
+    media: {
+      src: '/media/sentiment-demo.gif',
+      still: '/media/sentiment-demo-still.png',
+      alt: 'Recording of the Streamlit dashboard: a review praising the design and battery but criticizing service and price is analyzed as MIXED, with design and performance scored positive and service and value scored negative.',
+      width: 880,
+      height: 550,
+      caption: 'Recorded from the local Streamlit dashboard',
+    },
+    wide: true,
   },
 ]
 
