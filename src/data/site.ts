@@ -117,6 +117,7 @@ export const systems: SystemProject[] = [
       "Exam-prep platform for Anthropic's Claude Certified Architect – Foundations exam: 30 lessons, 30 study decks, 10 guided labs, 180 practice questions, and two timed 60-question practice exams.",
       'Keeps timed exam rehearsal separate from everyday practice, so a mock exam never distorts a student’s mastery tracking, and ties every lesson to the published exam blueprint.',
       'Deployed on AWS EC2; covered by 2,000+ Vitest unit tests and Playwright end-to-end tests, including automated accessibility checks.',
+      'Co-authored with fellow student William Judd.',
     ],
     links: [{ label: 'Open live site', href: 'https://monmouthaiteaching.com/ccarf' }],
   },
@@ -164,7 +165,7 @@ export const events: LogEvent[] = [
     bullets: [
       'Help students set up agentic AI systems and use AI tools effectively and ethically.',
       'Explain unfamiliar AI concepts in one-on-one and classroom settings.',
-      'Built the Claude Certified Architect study web app used to prepare for the certification exam.',
+      'Built the Claude Certified Architect study web app with William Judd, used to prepare for the certification exam.',
     ],
   },
   {
@@ -185,7 +186,7 @@ export const events: LogEvent[] = [
     period: 'May 2026 – Present',
     bullets: [
       'Modernized GArel, an OCaml bidirectional type checker (from Qu et al., ICFP 2019) for relational cost analysis.',
-      'Fixed drift in a 36-program test corpus, stress-tested the checker to map its limits, and developed one of two independent solution paths.',
+      'Fixed drift in a 36-program test corpus, stress-tested the checker to map its limits, and developed one of two independent solution paths; fellow student William Judd developed the other.',
       'Currently evaluating CHC- and SMT-solver-based alternatives to scale the analysis.',
       'Built the GArel Playground web app, hosted on AWS.',
     ],
