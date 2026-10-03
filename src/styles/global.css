@@ -358,7 +358,6 @@ main:focus {
   body::before,
   body::after,
   .status-bar,
-  .hero-actions,
   .monitor {
     display: none !important;
   }

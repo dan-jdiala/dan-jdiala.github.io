@@ -1,4 +1,4 @@
-import { systems, type CaseNotes, type Stat, type SystemProject, type SystemStatus } from '../data/site'
+import { systems, type Stat, type SystemProject, type SystemStatus } from '../data/site'
 import { stagger } from '../lib/style'
 import { ArrowUpRightIcon, LockIcon } from './Icons'
 import { NewTab } from './NewTab'
@@ -9,13 +9,6 @@ const statusLabel: Record<SystemStatus, string> = {
   active: 'Active development',
   'open-source': 'Open source',
 }
-
-const caseLabels: [keyof CaseNotes, string][] = [
-  ['problem', 'Problem'],
-  ['role', 'My role'],
-  ['challenge', 'Hardest part'],
-  ['limits', 'Limits'],
-]
 
 export function Systems() {
   return (
@@ -66,20 +59,6 @@ function SystemPanel({ project, index }: { project: SystemProject; index: number
 
         {project.stats && <FlagshipBoard name={project.name} stats={project.stats} />}
       </div>
-
-      <details className="case">
-        <summary className="case__summary mono">
-          How it works <span className="case__toggle" aria-hidden="true" />
-        </summary>
-        <dl className="case__list">
-          {caseLabels.map(([key, label]) => (
-            <div key={key} className="case__row">
-              <dt className="mono">{label}</dt>
-              <dd>{project.caseNotes[key]}</dd>
-            </div>
-          ))}
-        </dl>
-      </details>
 
       <div className="system__foot">
         <ul className="system__stack" aria-label="Tech stack">

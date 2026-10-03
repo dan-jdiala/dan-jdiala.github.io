@@ -6,7 +6,6 @@ export type Link = { label: string; href: string }
 export type Profile = {
   name: string
   role: string
-  location: string
   status: string
   summary: string
   email: string
@@ -22,13 +21,6 @@ export type Telemetry = {
 
 export type SystemStatus = 'live' | 'active' | 'open-source'
 
-export type CaseNotes = {
-  problem: string
-  role: string
-  challenge: string
-  limits: string
-}
-
 export type Stat = { value: string; label: string }
 
 export type SystemProject = {
@@ -40,7 +32,6 @@ export type SystemProject = {
   period: string
   stack: string[]
   facts: string[]
-  caseNotes: CaseNotes
   links: Link[]
   note?: string
   stats?: Stat[]
@@ -72,8 +63,7 @@ export type Education = {
 export const profile: Profile = {
   name: 'Daniel-John Diala',
   role: 'Software Engineering @ Monmouth University · 4.0 GPA',
-  location: 'Long Branch, NJ',
-  status: 'Seeking Summer 2027 internships',
+  status: 'Open to internships',
   summary:
     "I'm an undergraduate Software Engineering student who builds real-world projects end to end, from ML systems and data pipelines to websites, and I'm looking to eventually expand into mobile apps and hardware.",
   email: 's1398883@monmouth.edu',
@@ -101,20 +91,12 @@ export const systems: SystemProject[] = [
     stack: ['Python', 'PyTorch', 'FastAPI', 'PostgreSQL', 'React', 'Docker'],
     facts: [
       'Hospital edge nodes train a PyTorch model on local (simulated) patient data and send only Ed25519-signed, Laplace-noised updates (ε = 1.0 per round), never patient records. The FastAPI coordinator merges them with norm clipping and a coordinate-wise median to resist poisoned submissions.',
+      'Built the update path to fail closed: hospitals enroll signing keys, every update is signature-checked, a nonce ledger blocks replays, and revoked keys are rejected, so a forged or repeated submission is refused rather than merged.',
       'A transformer trained with supervised contrastive loss classifies 16 pathogen profiles at 83.6% validation accuracy on synthetic data and flags possible novel pathogens by their embedding distance from known classes.',
       'JWT auth with role-based access control, 23 SQLAlchemy models with hand-written SQL migrations, optional mutual TLS with CRL/OCSP revocation, CDC wastewater and NCBI GenBank feeds, and a React dashboard with an outbreak map; about 1,500 pytest tests.',
     ],
-    caseNotes: {
-      problem:
-        'Outbreaks are often recognized late, and hospitals can’t pool patient records to spot them sooner because of privacy rules.',
-      role: 'Solo project: I designed and built the edge client, FastAPI coordinator, PostgreSQL schema, ML models, and React dashboard.',
-      challenge:
-        'Making the update path fail closed: hospitals enroll signing keys, every update is signature-checked, a nonce ledger blocks replays, and revoked keys are rejected, so a forged or repeated submission is refused rather than merged.',
-      limits:
-        'Runs on synthetic data; the 4–7 day early-warning lead is a design goal, not a measured result. Homomorphic-encryption and zero-knowledge components fall back to simulations without native libraries, and production startup refuses simulated crypto.',
-    },
     links: [],
-    note: 'Private repository',
+    note: 'Private repository · Synthetic-data research prototype; encryption and zero-knowledge components fall back to simulations without native libraries',
     stats: [
       { value: '5', label: 'simulated hospitals' },
       { value: '16', label: 'pathogen classes' },
@@ -133,15 +115,9 @@ export const systems: SystemProject[] = [
     stack: ['Next.js', 'TypeScript', 'React', 'Vitest', 'Playwright', 'AWS EC2'],
     facts: [
       "Exam-prep platform for Anthropic's Claude Certified Architect – Foundations exam: 30 lessons, 30 study decks, 10 guided labs, 180 practice questions, and two timed 60-question practice exams.",
+      'Keeps timed exam rehearsal separate from everyday practice, so a mock exam never distorts a student’s mastery tracking, and ties every lesson to the published exam blueprint.',
       'Deployed on AWS EC2; covered by 2,000+ Vitest unit tests and Playwright end-to-end tests, including automated accessibility checks.',
     ],
-    caseNotes: {
-      problem: 'AI Literacy students needed structured, self-paced preparation for a new certification exam.',
-      role: 'Built the app (101 of 102 commits) and use it with students as the course’s teaching assistant.',
-      challenge:
-        'Keeping timed exam rehearsal separate from everyday practice, so a mock exam never distorts a student’s mastery tracking, and tying every lesson to the published exam blueprint.',
-      limits: 'An independent study aid, not affiliated with Anthropic. Progress is stored in the browser, with no accounts.',
-    },
     links: [{ label: 'Open live site', href: 'https://monmouthaiteaching.com/ccarf' }],
   },
   {
@@ -154,15 +130,10 @@ export const systems: SystemProject[] = [
     stack: ['React', 'TypeScript', 'Vite', 'FastAPI', 'OCaml', 'Docker'],
     facts: [
       'Browser playground for GArel, an OCaml bidirectional type checker (from Qu et al., ICFP 2019) that proves bounds on how much one program run can cost relative to another, without running either, with constraint-generation visualizations.',
+      'Built as an undergraduate research student under Professor Qu at Monmouth University, working with fellow student William Judd.',
       'FastAPI backend runs the checker as a sandboxed subprocess (time caps, rate limiting, read-only, capability-dropped containers on an internal network); Playwright end-to-end suites cover the UI.',
+      '25 of the 36 corpus programs currently verify, and the app reports the remaining failures clearly.',
     ],
-    caseNotes: {
-      problem: 'The research checker was command-line only, which made relational cost analysis hard for newcomers to try or learn.',
-      role: 'Primary developer of the playground (272 of 295 commits), alongside the research on modernizing the checker.',
-      challenge:
-        'Safely running research code for anyone on the internet: wall-clock caps, process-group kills, per-client rate limits, concurrency slots, and locked-down containers.',
-      limits: '25 of the 36 corpus programs currently verify; the app reports the remaining failures clearly instead of hiding them.',
-    },
     links: [{ label: 'Open live site', href: 'https://relationalreasoning.com/garel/' }],
   },
   {
@@ -176,14 +147,8 @@ export const systems: SystemProject[] = [
     facts: [
       'Classifies reviews as positive, negative, neutral, or mixed using a 6,800-term graded lexicon with negation handling and emoji sarcasm cues, plus aspect-based analysis.',
       'Flask REST API (15+ endpoints, OpenAPI docs) and Streamlit dashboard; in local benchmarks, cut runtime for 500 reviews from 17s to 5s with batched spaCy processing, lemma caching, and bulk SQLite inserts.',
+      'Rule-based by design: no trained model, and no labeled accuracy evaluation yet.',
     ],
-    caseNotes: {
-      problem: 'Star ratings hide what a reviewer actually liked or disliked, and mixed reviews get flattened into one score.',
-      role: 'Solo project.',
-      challenge:
-        'Handling nuance with rules instead of a trained model: negation (“not bad”), intensifiers, sarcasm cues, and reviews that are positive about one aspect and negative about another.',
-      limits: 'Lexicon-based, with no labeled accuracy evaluation yet; the speedup was measured locally.',
-    },
     links: [{ label: 'View code', href: 'https://github.com/dan-jdiala/sentiment-analysis-tool' }],
   },
 ]
@@ -250,7 +215,7 @@ export const skills: SkillGroup[] = [
   { label: 'ML & Data', items: ['PyTorch', 'spaCy', 'NLP', 'pandas', 'NumPy', 'Federated learning'] },
   { label: 'Web & Backend', items: ['React', 'Next.js', 'FastAPI', 'Flask', 'REST APIs', 'PostgreSQL', 'SQLAlchemy', 'Redis'] },
   { label: 'Infra & Testing', items: ['AWS (EC2)', 'Docker', 'Git', 'GitHub Actions', 'pytest', 'Vitest', 'Playwright'] },
-  { label: 'AI Tools', items: ['Claude', 'Claude Code', 'Anthropic API', 'Agentic AI workflows'] },
+  { label: 'AI Tools', items: ['Claude', 'Claude Code', 'OpenAI Codex', 'Anthropic API', 'Agentic AI workflows'] },
 ]
 
 export const education: Education = {
