@@ -117,7 +117,7 @@ export const systems: SystemProject[] = [
       "Exam-prep platform for Anthropic's Claude Certified Architect – Foundations exam: 30 lessons, 30 study decks, 10 guided labs, 180 practice questions, and two timed 60-question practice exams.",
       'Keeps timed exam rehearsal separate from everyday practice, so a mock exam never distorts a student’s mastery tracking, and ties every lesson to the published exam blueprint.',
       'Deployed on AWS EC2; covered by 2,000+ Vitest unit tests and Playwright end-to-end tests, including automated accessibility checks.',
-      'Co-authored with fellow student William Judd.',
+      'Co-authored with William Judd.',
     ],
     links: [{ label: 'Open live site', href: 'https://monmouthaiteaching.com/ccarf' }],
   },
@@ -131,7 +131,7 @@ export const systems: SystemProject[] = [
     stack: ['React', 'TypeScript', 'Vite', 'FastAPI', 'OCaml', 'Docker'],
     facts: [
       'Browser playground for GArel, an OCaml bidirectional type checker (from Qu et al., ICFP 2019) that proves bounds on how much one program run can cost relative to another, without running either, with constraint-generation visualizations.',
-      'Built as an undergraduate research student under Professor Qu at Monmouth University, working with fellow student William Judd.',
+      'Built as an undergraduate research student under Professor Qu at Monmouth University, working with William Judd.',
       'FastAPI backend runs the checker as a sandboxed subprocess (time caps, rate limiting, read-only, capability-dropped containers on an internal network); Playwright end-to-end suites cover the UI.',
       '25 of the 36 corpus programs currently verify, and the app reports the remaining failures clearly.',
     ],
@@ -186,7 +186,7 @@ export const events: LogEvent[] = [
     period: 'May 2026 – Present',
     bullets: [
       'Modernized GArel, an OCaml bidirectional type checker (from Qu et al., ICFP 2019) for relational cost analysis.',
-      'Fixed drift in a 36-program test corpus, stress-tested the checker to map its limits, and developed one of two independent solution paths; fellow student William Judd developed the other.',
+      'Fixed drift in a 36-program test corpus, stress-tested the checker to map its limits, and developed one of two independent solution paths; William Judd developed the other.',
       'Currently evaluating CHC- and SMT-solver-based alternatives to scale the analysis.',
       'Built the GArel Playground web app, hosted on AWS.',
     ],
