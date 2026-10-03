@@ -3,6 +3,7 @@ import { EducationPanel } from './components/EducationPanel'
 import { EventLog } from './components/EventLog'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
+import { LatticeBackground } from './components/LatticeBackground'
 import { StatusBar } from './components/StatusBar'
 import { Systems } from './components/Systems'
 import { TelemetryTiles } from './components/TelemetryTiles'
@@ -10,6 +11,7 @@ import { TelemetryTiles } from './components/TelemetryTiles'
 export default function App() {
   return (
     <>
+      <LatticeBackground />
       <a className="skip-link" href="#main">
         Skip to content
       </a>
