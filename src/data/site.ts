@@ -149,7 +149,7 @@ export const systems: SystemProject[] = [
     period: 'Dec 2025 – Jan 2026',
     stack: ['Python', 'spaCy', 'Flask', 'SQLite', 'Streamlit', 'Plotly'],
     facts: [
-      'Classifies reviews as positive, negative, neutral, or mixed using a 6,800-term graded lexicon with negation handling and emoji sarcasm cues, plus aspect-based analysis.',
+      'Classifies reviews as positive, negative, neutral, or mixed using a 6,800-term graded lexicon with negation handling and emoji sarcasm cues, plus aspect-based analysis and domain-specific weights for restaurant, software, hotel, and retail reviews.',
       'Flask REST API (15+ endpoints, OpenAPI docs) and Streamlit dashboard; in local benchmarks, cut runtime for 500 reviews from 17s to 5s with batched spaCy processing, lemma caching, and bulk SQLite inserts.',
       'Rule-based by design: no trained model, and no labeled accuracy evaluation yet.',
     ],
