@@ -63,7 +63,7 @@ export type Education = {
 export const profile: Profile = {
   name: 'Daniel-John Diala',
   role: 'Software Engineering @ Monmouth University · 4.0 GPA',
-  status: 'Open to internships',
+  status: 'Undergraduate Student Researcher',
   summary:
     "I'm an undergraduate Software Engineering student who builds real-world projects end to end, from ML systems and data pipelines to websites, and I'm looking to eventually expand into mobile apps and hardware.",
   email: 's1398883@monmouth.edu',
