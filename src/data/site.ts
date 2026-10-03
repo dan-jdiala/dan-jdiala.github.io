@@ -130,7 +130,7 @@ export const systems: SystemProject[] = [
     stack: ['React', 'TypeScript', 'Vite', 'FastAPI', 'OCaml', 'Docker'],
     facts: [
       'Browser playground for GArel, an OCaml bidirectional type checker (from Qu et al., ICFP 2019) that proves bounds on how much one program run can cost relative to another, without running either, with constraint-generation visualizations.',
-      'Built as an undergraduate research student under Professor Qu at Monmouth University, working with fellow student William Judd.',
+      'Built as an undergraduate research student under Professor Qu at Monmouth University, working with fellow student William Judd (juddwt963@gmail.com).',
       'FastAPI backend runs the checker as a sandboxed subprocess (time caps, rate limiting, read-only, capability-dropped containers on an internal network); Playwright end-to-end suites cover the UI.',
       '25 of the 36 corpus programs currently verify, and the app reports the remaining failures clearly.',
     ],
