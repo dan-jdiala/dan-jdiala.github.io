@@ -163,9 +163,9 @@ export const systems: SystemProject[] = [
     ],
     links: [{ label: 'View code', href: 'https://github.com/dan-jdiala/sentiment-analysis-tool' }],
     media: {
-      src: '/media/sentiment-demo.gif',
+      src: '/media/sentiment-demo.mp4',
       still: '/media/sentiment-demo-still.png',
-      alt: 'Recording of the Streamlit dashboard: a review praising the design and battery but criticizing service and price is analyzed as MIXED, with design and performance scored positive and service and value scored negative.',
+      alt: 'Demo video of the Streamlit dashboard: a review praising the design and battery but criticizing service and price is analyzed as MIXED, with design and performance scored positive and service and value scored negative.',
       width: 880,
       height: 550,
     },
