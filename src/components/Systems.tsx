@@ -1,4 +1,4 @@
-import { systems, type Stat, type SystemProject, type SystemStatus } from '../data/site'
+import { moreProjects, systems, type Stat, type SystemProject, type SystemStatus } from '../data/site'
 import { stagger } from '../lib/style'
 import { ArrowUpRightIcon, LockIcon } from './Icons'
 import { NewTab } from './NewTab'
@@ -19,6 +19,7 @@ export function Systems() {
           <SystemPanel key={project.id} project={project} index={i} />
         ))}
       </div>
+      {moreProjects.length > 0 && <MoreProjects />}
     </Section>
   )
 }
@@ -131,6 +132,31 @@ function FlagshipBoard({ name, stats }: { name: string; stats: Stat[] }) {
           </div>
         ))}
       </dl>
+    </div>
+  )
+}
+
+// Compact list of smaller and course projects: one row each, linked to the code.
+function MoreProjects() {
+  return (
+    <div className="more rv" style={stagger(systems.length + 1)}>
+      <h3 className="more__title mono">More projects</h3>
+      <ul className="more__list">
+        {moreProjects.map((project) => (
+          <li key={project.name} className="more__item">
+            <div className="more__main">
+              <span className="more__name">{project.name}</span>
+              <span className="more__context mono">{project.context}</span>
+              <p className="more__desc">{project.description}</p>
+            </div>
+            <span className="more__stack mono">{project.stack.join(' · ')}</span>
+            <a className="more__link mono" href={project.link.href} target="_blank" rel="noreferrer">
+              {project.link.label} <ArrowUpRightIcon />
+              <NewTab />
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

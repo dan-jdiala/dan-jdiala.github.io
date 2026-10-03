@@ -42,6 +42,14 @@ export type SystemProject = {
   wide?: boolean
 }
 
+export type MinorProject = {
+  name: string
+  description: string
+  context: string
+  stack: string[]
+  link: Link
+}
+
 export type LogEvent = {
   id: string
   stamp: string
@@ -162,6 +170,17 @@ export const systems: SystemProject[] = [
       height: 550,
     },
     wide: true,
+  },
+]
+
+// Smaller and course projects, shown as a compact list under the main projects.
+export const moreProjects: MinorProject[] = [
+  {
+    name: 'File Reader',
+    description: 'The type command written in x86-64 assembly: opens a file and prints its contents, for Windows and macOS.',
+    context: 'CS-104 course project',
+    stack: ['x86-64 Assembly', 'Make'],
+    link: { label: 'View code', href: 'https://github.com/dan-jdiala/cs-104-assembly-project' },
   },
 ]
 
