@@ -557,6 +557,23 @@
 .player.is-paused .player__icon.is-flashing {
   --rest: 1;
 }
+/* Touch screens have no hover: while playing, keep a small pause badge in the corner. */
+@media (hover: none) {
+  .player.is-playing .player__toggle {
+    place-items: end;
+    padding: 10px;
+  }
+  .player.is-playing .player__icon {
+    width: 40px;
+    height: 40px;
+    opacity: 0.8;
+    transform: none;
+  }
+  .player.is-playing .player__icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
 
 /* Pulse-Net node board */
 .flagship {

@@ -41,11 +41,12 @@ export function signalPath(
   let j = Math.min(Math.max(startJ, 2), maxJ)
   const minJ = allowRise ? Math.max(2, j - 1) : j
   const bandMaxJ = j
+  const canTurn = minJ < bandMaxJ
   const path: Point[] = [{ x: lineCoord(i), y: lineCoord(j) }]
   let last: 'h' | 'v' = 'v'
 
   for (let n = 0; n < steps; n++) {
-    const turn = last === 'h' && Math.random() < 0.3
+    const turn = canTurn && last === 'h' && Math.random() < 0.3
     if (turn) {
       const up = j <= minJ ? false : j >= bandMaxJ ? true : Math.random() < 0.5
       j += up ? -1 : 1

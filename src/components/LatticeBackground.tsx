@@ -38,8 +38,11 @@ export function LatticeBackground() {
     const pulseFrom = (el: Element | null, steps: number, duration: number) => {
       if (!el || document.hidden) return
       const r = el.getBoundingClientRect()
+      // Entrance animations shift elements down while they fade in; remove that offset.
+      const transform = getComputedStyle(el).transform
+      const shift = transform && transform !== 'none' ? new DOMMatrixReadOnly(transform).m42 : 0
       const narrow = window.innerWidth < 600
-      renderer.emit(nearestIndex(r.left), nearestIndex(r.top - 30), steps, duration, !narrow)
+      renderer.emit(nearestIndex(r.left), nearestIndex(r.top - shift - 30), steps, duration, !narrow)
     }
 
     // The load pulse runs in the open band above the hero. Phones have no free grid line

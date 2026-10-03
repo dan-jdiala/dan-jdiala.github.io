@@ -54,7 +54,7 @@ export function Recording({ media }: { media: Media }) {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           aria-label={media.alt}
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}

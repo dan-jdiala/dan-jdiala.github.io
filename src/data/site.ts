@@ -184,7 +184,7 @@ export const moreProjects: MinorProject[] = [
   },
   {
     name: 'Sphero Robot Obstacle Course',
-    description: 'Group project: programmed a Sphero robot to run a measured obstacle course with a block program of distance-based rolls (heading, speed, distance). I wrote most of the project document, helped build the code blocks, and measured the course.',
+    description: 'Programmed a Sphero robot to run a measured obstacle course with a block program of distance-based rolls (heading, speed, distance). I wrote most of the project document, helped build the code blocks, and measured the course.',
     context: 'Group project',
     stack: ['Sphero Edu', 'Block programming'],
     link: { label: 'View group repo', href: 'https://github.com/satvikdhiman2025-cmd/Robot-project' },
