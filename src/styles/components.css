@@ -491,13 +491,71 @@
 .system__media {
   margin: 0;
 }
-.system__media img {
+/* YouTube-style player: click anywhere to toggle; the round icon shows on hover, focus,
+   when paused, and briefly after each toggle. */
+.player {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: #fff6ec;
+}
+.player video {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
-  background: #fafafa;
+}
+.player__toggle {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.player__toggle:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: -4px;
+}
+.player__icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(7, 13, 24, 0.62);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(7, 13, 24, 0.35);
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+.player.is-paused .player__icon,
+.player__toggle:hover .player__icon,
+.player__toggle:focus-visible .player__icon {
+  opacity: 1;
+  transform: none;
+}
+.player__icon.is-flashing {
+  animation: player-flash 0.6s ease-out;
+}
+@keyframes player-flash {
+  0% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  100% {
+    opacity: var(--rest, 0);
+    transform: none;
+  }
+}
+.player.is-paused .player__icon.is-flashing {
+  --rest: 1;
 }
 
 /* Pulse-Net node board */
