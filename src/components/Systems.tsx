@@ -89,7 +89,11 @@ function SystemPanel({ project, index }: { project: SystemProject; index: number
 // Pulse-Net's data flow: what moves between the three parts of the system.
 const flow = [
   { name: 'Hospital edge nodes', detail: 'Local PyTorch training; patient data stays on site', link: 'Signed, noised updates' },
-  { name: 'FastAPI coordinator', detail: 'Verify, median-aggregate, store in PostgreSQL', link: 'Outbreak signals' },
+  {
+    name: 'FastAPI coordinator',
+    detail: 'Verifies and median-aggregates updates; ingests clinical reports and CDC/NCBI feeds; stores state in PostgreSQL',
+    link: 'Hotspots and alerts',
+  },
   { name: 'React dashboard', detail: 'Outbreak map and alerts' },
 ]
 
@@ -101,11 +105,14 @@ function FlagshipBoard({ name, stats }: { name: string; stats: Stat[] }) {
         <ol className="flow__steps">
           {flow.map((step) => (
             <li key={step.name} className="flow__step">
-              <span className="flow__name">{step.name}</span>
-              <span className="flow__detail">{step.detail}</span>
+              <span className="flow__box">
+                <span className="flow__name">{step.name}</span>
+                <span className="flow__detail">{step.detail}</span>
+              </span>
               {step.link && (
                 <span className="flow__link mono">
                   <span aria-hidden="true">↓ </span>
+                  <span className="visually-hidden">sends </span>
                   {step.link}
                 </span>
               )}

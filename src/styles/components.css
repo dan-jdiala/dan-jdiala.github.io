@@ -429,16 +429,18 @@
 .flow__step {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 10px 12px;
+}
+/* The box is bordered; the arrow label below it sits in normal flow and wraps. */
+.flow__box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.625rem 0.75rem;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
   background: rgba(16, 27, 45, 0.9);
 }
-.flow__step + .flow__step {
-  margin-top: 30px;
-}
-.flow__step:nth-child(2) {
+.flow__step:nth-child(2) .flow__box {
   border-color: rgba(245, 165, 36, 0.55);
 }
 .flow__name {
@@ -452,13 +454,11 @@
   line-height: 1.45;
 }
 .flow__link {
-  position: relative;
-  top: 18px;
-  height: 0;
+  padding: 0.375rem 0 0.375rem 0.75rem;
   color: var(--amber);
   font-size: 0.75rem;
   letter-spacing: 0.06em;
-  white-space: nowrap;
+  line-height: 1.4;
 }
 .flow__caption {
   margin-top: 12px;
