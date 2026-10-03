@@ -146,12 +146,14 @@ function MoreProjects() {
           <li key={project.name} className="more__item">
             <div className="more__main">
               <span className="more__name">{project.name}</span>
+              <span className="visually-hidden">, </span>
               <span className="more__context mono">{project.context}</span>
               <p className="more__desc">{project.description}</p>
             </div>
             <span className="more__stack mono">{project.stack.join(' · ')}</span>
             <a className="more__link mono" href={project.link.href} target="_blank" rel="noreferrer">
               {project.link.label} <ArrowUpRightIcon />
+              <span className="visually-hidden"> for {project.name}</span>
               <NewTab />
             </a>
           </li>

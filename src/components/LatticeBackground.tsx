@@ -34,15 +34,19 @@ export function LatticeBackground() {
     }
 
     // Start on the grid line just above an element, in open space rather than behind text.
+    // On phones the gaps between blocks are tighter, so traces stay level instead of rising.
     const pulseFrom = (el: Element | null, steps: number, duration: number) => {
       if (!el || document.hidden) return
       const r = el.getBoundingClientRect()
-      renderer.emit(nearestIndex(r.left), nearestIndex(r.top - 30), steps, duration)
+      const narrow = window.innerWidth < 600
+      renderer.emit(nearestIndex(r.left), nearestIndex(r.top - 30), steps, duration, !narrow)
     }
 
+    // The load pulse runs in the open band above the hero. Phones have no free grid line
+    // between the two-row header and the hero label, so they skip it.
     const loadTimer = window.setTimeout(() => {
-      const narrow = window.innerWidth < 600
-      pulseFrom(document.querySelector('.eyebrow'), narrow ? 5 : 10, narrow ? 900 : 1200)
+      if (window.innerWidth < 600) return
+      pulseFrom(document.querySelector('.eyebrow'), 10, 1200)
     }, 450)
 
     const seen = new Set<string>()

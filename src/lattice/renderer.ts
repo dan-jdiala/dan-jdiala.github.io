@@ -42,8 +42,9 @@ export class LatticeRenderer {
     this.draw(performance.now())
   }
 
-  emit(startI: number, startJ: number, steps: number, duration: number) {
-    this.pulses.push({ path: signalPath(startI, startJ, steps, this.width, this.height), start: performance.now(), duration })
+  emit(startI: number, startJ: number, steps: number, duration: number, allowRise = true) {
+    const path = signalPath(startI, startJ, steps, this.width, this.height, allowRise)
+    this.pulses.push({ path, start: performance.now(), duration })
     if (!this.frame) this.frame = requestAnimationFrame(this.tick)
   }
 
