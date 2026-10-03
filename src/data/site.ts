@@ -75,7 +75,7 @@ export const profile: Profile = {
   location: 'Long Branch, NJ',
   status: 'Seeking Summer 2027 internships',
   summary:
-    "I build software end to end: Pulse-Net, a federated outbreak-detection prototype with a PyTorch transformer and a FastAPI/PostgreSQL backend, plus two live web apps for teaching and research. Next, I'm expanding into mobile apps and hardware.",
+    "I'm an undergraduate Software Engineering student who builds real-world projects end to end, from ML systems and data pipelines to websites, and I'm looking to eventually expand into mobile apps and hardware.",
   email: 's1398883@monmouth.edu',
   links: {
     linkedin: 'https://www.linkedin.com/in/daniel-john-diala',
