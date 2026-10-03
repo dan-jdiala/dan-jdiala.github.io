@@ -1,6 +1,6 @@
 # dan-jdiala.github.io
 
-Personal website of **Daniel-John Diala**, Software Engineering student at Monmouth University.
+My personal website. I'm a Software Engineering student at Monmouth University.
 Live at **https://dan-jdiala.github.io**.
 
 Designed as an operations console: a status bar, telemetry tiles, projects shown as "systems," and experience as an event log.
