@@ -182,6 +182,13 @@ export const moreProjects: MinorProject[] = [
     stack: ['x86-64 Assembly', 'Make'],
     link: { label: 'View code', href: 'https://github.com/dan-jdiala/cs-104-assembly-project' },
   },
+  {
+    name: 'Sphero Robot Obstacle Course',
+    description: 'Programmed a Sphero robot to run a measured obstacle course with a block program of timed rolls (heading, speed, distance). I wrote most of the project document, helped build the code blocks, and measured the course.',
+    context: 'Group project',
+    stack: ['Sphero Edu', 'Block programming'],
+    link: { label: 'View code', href: 'https://github.com/satvikdhiman2025-cmd/Robot-project' },
+  },
 ]
 
 export const events: LogEvent[] = [
