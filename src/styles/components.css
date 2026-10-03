@@ -281,11 +281,6 @@
   line-height: 1;
   white-space: nowrap;
 }
-.tile__affix {
-  margin: 0 2px;
-  color: var(--amber);
-  font-size: 0.55em;
-}
 .tile__detail {
   margin-top: auto;
   color: var(--muted);
@@ -371,6 +366,7 @@
 .log__bullets li::before,
 .edu__honors li::before {
   content: '\2013';
+  content: '\2013' / '';
   position: absolute;
   top: 0;
   left: 0;
@@ -420,44 +416,56 @@
   border-radius: var(--radius);
   background: rgba(7, 13, 24, 0.55);
 }
-.flagship__nodes {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 8px;
+.flow {
+  margin: 0;
 }
-.node {
+.flow__steps {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.flow__step {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: rgba(16, 27, 45, 0.9);
+}
+.flow__step + .flow__step {
+  margin-top: 30px;
+}
+.flow__step:nth-child(2) {
+  border-color: rgba(245, 165, 36, 0.55);
+}
+.flow__name {
+  color: var(--text);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+.flow__detail {
   color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+.flow__link {
+  position: relative;
+  top: 18px;
+  height: 0;
+  color: var(--amber);
   font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
 }
-.node__dot {
-  width: 12px;
-  height: 12px;
-  border: 1px solid var(--teal);
-  border-radius: 50%;
-  background: var(--teal-soft);
-  color: var(--teal);
-  animation: pulse 2.6s var(--ease-out) 1;
-  animation-delay: calc(var(--i, 0) * 0.35s);
-}
-.node--hub {
-  grid-column: 1 / -1;
-  flex-direction: row;
-  justify-content: center;
-  padding-top: 14px;
-  border-top: 1px dashed var(--line-strong);
-  color: var(--amber);
-}
-.node--hub .node__dot {
-  width: 14px;
-  height: 14px;
-  border-color: var(--amber);
-  background: var(--amber-soft);
-  color: var(--amber);
+.flow__caption {
+  margin-top: 12px;
+  color: var(--faint);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 .flagship__stats {
   display: grid;
@@ -795,19 +803,38 @@ details[open] .log__toggle::before {
   .tile {
     min-height: 124px;
   }
-  /* The hero repeats these links, so phones get room for a readable chip. */
+  /* Phones: contact links live in the footer (reachable from the nav), leaving room for the chip. */
   .status-chip__label,
   .status-tools {
     display: none;
   }
-  .flagship__nodes {
-    gap: 4px;
-  }
-  .readout__row {
-    grid-template-columns: 92px 1fr;
-  }
   /* The readout repeats the hero on phones; hiding it brings projects up a screen. */
-  .hero__readout {
+  .hero__readout,
+  .flow {
+    display: none;
+  }
+  .status-nav {
+    gap: 12px;
+    justify-content: space-between;
+  }
+  .status-nav a {
+    letter-spacing: 0.04em;
+  }
+  /* R4: stack the section label above the heading. */
+  .section-head {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .section-sub {
+    grid-column: 1;
+  }
+  .section-index {
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  /* Education directly follows Skills on the page, so the narrowest nav skips it. */
+  .status-nav a[href='#education'] {
     display: none;
   }
 }

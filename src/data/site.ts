@@ -90,13 +90,13 @@ export const systems: SystemProject[] = [
     period: 'Jan 2026 – Present',
     stack: ['Python', 'PyTorch', 'FastAPI', 'PostgreSQL', 'React', 'Docker'],
     facts: [
-      'Hospital edge nodes train a PyTorch model on local (simulated) patient data and send only Ed25519-signed, Laplace-noised updates (ε = 1.0 per round), never patient records. The FastAPI coordinator merges them with norm clipping and a coordinate-wise median to resist poisoned submissions.',
-      'Built the update path to fail closed: hospitals enroll signing keys, every update is signature-checked, a nonce ledger blocks replays, and revoked keys are rejected, so a forged or repeated submission is refused rather than merged.',
+      'Hospital edge nodes train a PyTorch model on local (simulated) patient data and send only Ed25519-signed, Laplace-noised updates (ε = 1.0 per round), never patient records; the coordinator merges them with a norm-clipped coordinate-wise median to resist poisoning.',
+      'In production mode the update path fails closed: enrolled signing keys, signature checks, a durable nonce ledger against replays, and key revocation mean a forged or repeated submission is never merged.',
       'A transformer trained with supervised contrastive loss classifies 16 pathogen profiles at 83.6% validation accuracy on synthetic data and flags possible novel pathogens by their embedding distance from known classes.',
-      'JWT auth with role-based access control, 23 SQLAlchemy models with hand-written SQL migrations, optional mutual TLS with CRL/OCSP revocation, CDC wastewater and NCBI GenBank feeds, and a React dashboard with an outbreak map; about 1,500 pytest tests.',
+      'JWT auth with role-based access control, 23 SQLAlchemy models with hand-written SQL migrations, optional mutual TLS with CRL/OCSP revocation, CDC wastewater and NCBI GenBank feeds, and a React dashboard with an outbreak map.',
     ],
     links: [],
-    note: 'Private repository · Synthetic-data research prototype; encryption and zero-knowledge components fall back to simulations without native libraries',
+    note: 'Private repository · Synthetic-data prototype; encryption and zero-knowledge parts fall back to simulations without native libraries',
     stats: [
       { value: '5', label: 'simulated hospitals' },
       { value: '16', label: 'pathogen classes' },
@@ -108,13 +108,13 @@ export const systems: SystemProject[] = [
   {
     id: 'ccarf',
     name: 'Claude Certified Architect Study Web App',
-    subtitle: 'Exam-prep platform for Monmouth AI Literacy students',
+    subtitle: 'Independent exam-prep platform for Monmouth AI Literacy students (not affiliated with Anthropic)',
     status: 'live',
     tags: ['Teaching'],
     period: 'Aug 2026 – Present',
     stack: ['Next.js', 'TypeScript', 'React', 'Vitest', 'Playwright', 'AWS EC2'],
     facts: [
-      "Exam-prep platform for Anthropic's Claude Certified Architect – Foundations exam: 30 lessons, 30 study decks, 10 guided labs, 180 practice questions, and two timed 60-question practice exams.",
+      "Covers Anthropic's Claude Certified Architect – Foundations exam: 30 lessons, 30 study decks, 10 guided labs, 180 practice questions, and two timed 60-question practice exams.",
       'Keeps timed exam rehearsal separate from everyday practice, so a mock exam never distorts a student’s mastery tracking, and ties every lesson to the published exam blueprint.',
       'Deployed on AWS EC2; covered by 2,000+ Vitest unit tests and Playwright end-to-end tests, including automated accessibility checks.',
       'Co-authored with William Judd.',
@@ -224,6 +224,6 @@ export const education: Education = {
   degree: 'B.S. Software Engineering',
   expected: 'Expected May 2029',
   gpa: '4.0 / 4.0',
-  honors: ["Dean's List (Fall 2025, Spring 2026)", 'Academic Excellence Scholarship', 'Shirley Family Scholarship'],
+  honors: ['Monmouth University Honors School', "Dean's List (Fall 2025, Spring 2026)", 'Academic Excellence Scholarship', 'Shirley Family Scholarship'],
   coursework: ['Data Structures & Algorithms', 'Discrete Mathematics', 'Computer Architecture', 'Calculus I & II'],
 }

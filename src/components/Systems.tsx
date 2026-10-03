@@ -86,24 +86,34 @@ function SystemPanel({ project, index }: { project: SystemProject; index: number
   )
 }
 
-// Flagship at-a-glance numbers, styled like a node status board.
-function FlagshipBoard({ name, stats }: { name: string; stats: Stat[] }) {
-  const nodes = ['NA', 'EU', 'APAC', 'AFR', 'SA']
+// Pulse-Net's data flow: what moves between the three parts of the system.
+const flow = [
+  { name: 'Hospital edge nodes', detail: 'Local PyTorch training; patient data stays on site', link: 'Signed, noised updates' },
+  { name: 'FastAPI coordinator', detail: 'Verify, median-aggregate, store in PostgreSQL', link: 'Outbreak signals' },
+  { name: 'React dashboard', detail: 'Outbreak map and alerts' },
+]
 
+// Flagship at-a-glance: a data-flow figure plus key numbers.
+function FlagshipBoard({ name, stats }: { name: string; stats: Stat[] }) {
   return (
     <div className="flagship" role="group" aria-label={`${name} at a glance`}>
-      <div className="flagship__nodes" aria-hidden="true">
-        {nodes.map((node, i) => (
-          <span key={node} className="node" style={stagger(i)}>
-            <span className="node__dot" />
-            <span className="mono">{node}</span>
-          </span>
-        ))}
-        <span className="node node--hub">
-          <span className="node__dot" />
-          <span className="mono">COORDINATOR</span>
-        </span>
-      </div>
+      <figure className="flow">
+        <ol className="flow__steps">
+          {flow.map((step) => (
+            <li key={step.name} className="flow__step">
+              <span className="flow__name">{step.name}</span>
+              <span className="flow__detail">{step.detail}</span>
+              {step.link && (
+                <span className="flow__link mono">
+                  <span aria-hidden="true">↓ </span>
+                  {step.link}
+                </span>
+              )}
+            </li>
+          ))}
+        </ol>
+        <figcaption className="flow__caption mono">Figure 1 · {name} data flow</figcaption>
+      </figure>
       <dl className="flagship__stats">
         {stats.map((stat) => (
           <div key={stat.label}>

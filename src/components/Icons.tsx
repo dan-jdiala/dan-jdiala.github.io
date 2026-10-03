@@ -49,14 +49,6 @@ export function ArrowUpRightIcon({ title }: IconProps) {
   )
 }
 
-export function ArrowDownIcon({ title }: IconProps) {
-  return (
-    <svg {...base} {...a11y(title)}>
-      <path d="M12 5v14M6 13l6 6 6-6" />
-    </svg>
-  )
-}
-
 export function LockIcon({ title }: IconProps) {
   return (
     <svg {...base} {...a11y(title)}>
