@@ -185,7 +185,7 @@ export const events: LogEvent[] = [
     period: 'May 2026 – Present',
     bullets: [
       'Modernized GArel, an OCaml bidirectional type checker (from Qu et al., ICFP 2019) for relational cost analysis.',
-      'Fixed drift in a 36-program test corpus, stress-tested the checker to map its limits, and developed one of two independent solution paths; William Judd developed the other.',
+      'Fixed drift in a 36-program test corpus, stress-tested the checker to map its limits, and developed one of two independent solution paths.',
       'Currently evaluating CHC- and SMT-solver-based alternatives to scale the analysis.',
       'Built the GArel Playground web app, hosted on AWS.',
     ],
