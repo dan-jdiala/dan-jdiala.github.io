@@ -291,7 +291,7 @@
 /* ================= Systems ================= */
 .systems__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 .system {
@@ -310,7 +310,8 @@
 .panel:hover::after {
   border-color: var(--amber);
 }
-.system--flagship {
+.system--flagship,
+.system--wide {
   grid-column: 1 / -1;
 }
 .system__meta {
@@ -324,11 +325,16 @@
   color: var(--muted);
   font-size: 0.75rem;
 }
-.system--flagship .system__body {
+.system--flagship .system__body,
+.system--wide .system__body {
   display: grid;
   grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
   gap: clamp(24px, 4vw, 48px);
   align-items: start;
+}
+/* The recording needs more room than the stat board to stay readable. */
+.system--wide .system__body {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
 }
 .system__name {
   margin: 0;
@@ -404,6 +410,46 @@
 .system__note svg {
   width: 14px;
   height: 14px;
+}
+
+/* Project recording (lazy-loaded GIF) */
+.system__media {
+  margin: 0;
+}
+.system__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: #fafafa;
+}
+.system__media-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-top: 8px;
+  color: var(--faint);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+.media-toggle {
+  min-height: 32px;
+  padding: 4px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text-soft);
+  font: inherit;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.media-toggle:hover {
+  color: var(--amber);
+  border-color: var(--amber);
 }
 
 /* Pulse-Net node board */
@@ -754,7 +800,6 @@ details[open] .log__toggle::before {
   .telemetry__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .systems__grid,
   .capabilities {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -764,7 +809,8 @@ details[open] .log__toggle::before {
   .hero {
     grid-template-columns: minmax(0, 1fr);
   }
-  .system--flagship .system__body {
+  .system--flagship .system__body,
+  .system--wide .system__body {
     grid-template-columns: minmax(0, 1fr);
   }
 }
@@ -835,6 +881,12 @@ details[open] .log__toggle::before {
 @media (max-width: 420px) {
   /* Education directly follows Skills on the page, so the narrowest nav skips it. */
   .status-nav a[href='#education'] {
+    display: none;
+  }
+}
+
+@media (min-width: 1081px) and (max-width: 1240px) {
+  .status-chip__label {
     display: none;
   }
 }

@@ -2,6 +2,7 @@ import { systems, type Stat, type SystemProject, type SystemStatus } from '../da
 import { stagger } from '../lib/style'
 import { ArrowUpRightIcon, LockIcon } from './Icons'
 import { NewTab } from './NewTab'
+import { Recording } from './Recording'
 import { Section } from './Section'
 
 const statusLabel: Record<SystemStatus, string> = {
@@ -27,7 +28,7 @@ function SystemPanel({ project, index }: { project: SystemProject; index: number
 
   return (
     <article
-      className={`system panel rv${project.flagship ? ' system--flagship' : ''}`}
+      className={`system panel rv${project.flagship ? ' system--flagship' : ''}${project.wide ? ' system--wide' : ''}`}
       style={stagger(index + 1)}
       aria-labelledby={titleId}
     >
@@ -58,6 +59,7 @@ function SystemPanel({ project, index }: { project: SystemProject; index: number
         </div>
 
         {project.stats && <FlagshipBoard name={project.name} stats={project.stats} />}
+        {project.media && <Recording media={project.media} />}
       </div>
 
       <div className="system__foot">
