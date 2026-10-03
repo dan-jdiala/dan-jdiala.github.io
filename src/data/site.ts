@@ -23,7 +23,7 @@ export type SystemStatus = 'live' | 'active' | 'open-source'
 
 export type Stat = { value: string; label: string }
 
-export type Media = { src: string; still: string; alt: string; width: number; height: number; caption: string }
+export type Media = { src: string; still: string; alt: string; width: number; height: number }
 
 export type SystemProject = {
   id: string
@@ -160,7 +160,6 @@ export const systems: SystemProject[] = [
       alt: 'Recording of the Streamlit dashboard: a review praising the design and battery but criticizing service and price is analyzed as MIXED, with design and performance scored positive and service and value scored negative.',
       width: 880,
       height: 550,
-      caption: 'Recorded from the local Streamlit dashboard',
     },
     wide: true,
   },

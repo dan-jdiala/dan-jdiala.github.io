@@ -424,33 +424,6 @@
   border-radius: var(--radius);
   background: #fafafa;
 }
-.system__media-caption {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px 12px;
-  margin-top: 8px;
-  color: var(--faint);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-}
-.media-toggle {
-  min-height: 32px;
-  padding: 4px 12px;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
-  background: transparent;
-  color: var(--text-soft);
-  font: inherit;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-  transition: color 0.2s, border-color 0.2s;
-}
-.media-toggle:hover {
-  color: var(--amber);
-  border-color: var(--amber);
-}
 
 /* Pulse-Net node board */
 .flagship {
