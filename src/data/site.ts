@@ -108,7 +108,7 @@ export const systems: SystemProject[] = [
       'JWT auth with role-based access control, 23 SQLAlchemy models with hand-written SQL migrations, optional mutual TLS with CRL/OCSP revocation, CDC wastewater and NCBI GenBank feeds, and a React dashboard with an outbreak map.',
     ],
     links: [],
-    note: 'Private repository · Synthetic-data prototype; encryption and zero-knowledge parts fall back to simulations without native libraries',
+    note: 'Private repository · Synthetic-data prototype; encrypted aggregation uses a trusted development key dealer',
     stats: [
       { value: '5', label: 'simulated hospitals' },
       { value: '16', label: 'pathogen classes' },
