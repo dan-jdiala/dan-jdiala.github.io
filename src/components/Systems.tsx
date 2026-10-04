@@ -109,7 +109,7 @@ function SystemPanel({ project, index }: { project: SystemProject; index: number
 
 // Pulse-Net's data flow: what moves between the three parts of the system.
 const flow = [
-  { name: 'Hospital edge nodes', detail: 'Local PyTorch training; patient data stays on site', link: 'Signed, noised updates' },
+  { name: 'Hospital edge nodes', detail: 'Local PyTorch training; patient data stays on site', link: 'Signed, private updates' },
   {
     name: 'FastAPI coordinator',
     detail: 'Verifies and median-aggregates updates; ingests clinical reports and CDC/NCBI feeds; stores state in PostgreSQL',

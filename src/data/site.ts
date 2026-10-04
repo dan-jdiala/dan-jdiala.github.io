@@ -102,7 +102,7 @@ export const systems: SystemProject[] = [
     period: 'Jan 2026 – Present',
     stack: ['Python', 'PyTorch', 'FastAPI', 'PostgreSQL', 'React', 'Docker'],
     facts: [
-      'Hospital edge nodes train a PyTorch model on local (simulated) patient data and send only Ed25519-signed, Laplace-noised updates (ε = 1.0 per round), never patient records; the coordinator merges them with a norm-clipped coordinate-wise median to resist poisoning.',
+      'Hospital edge nodes train a PyTorch model on local (simulated) patient data and send only Ed25519-signed, differentially private updates (DP-SGD, ε = 1.0 per round, with a tracked lifetime privacy budget), never patient records; the coordinator merges them with a norm-clipped coordinate-wise median to resist poisoning.',
       'In production mode the update path fails closed: enrolled signing keys, signature checks, a durable nonce ledger against replays, and key revocation mean a forged or repeated submission is never merged.',
       'A transformer trained with supervised contrastive loss classifies 16 pathogen profiles at 83.6% validation accuracy on synthetic data and flags possible novel pathogens by their embedding distance from known classes.',
       'JWT auth with role-based access control, 23 SQLAlchemy models with hand-written SQL migrations, optional mutual TLS with CRL/OCSP revocation, CDC wastewater and NCBI GenBank feeds, and a React dashboard with an outbreak map.',
@@ -112,7 +112,7 @@ export const systems: SystemProject[] = [
     stats: [
       { value: '5', label: 'simulated hospitals' },
       { value: '16', label: 'pathogen classes' },
-      { value: 'ε 1.0', label: 'noise per round' },
+      { value: 'ε 1.0', label: 'privacy per round' },
       { value: '1,500+', label: 'pytest tests' },
     ],
     flagship: true,
