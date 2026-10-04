@@ -1,7 +1,7 @@
 import { profile } from '../data/site'
 import { useReveal } from '../hooks/useReveal'
 import { stagger } from '../lib/style'
-import { GitHubIcon, LinkedInIcon, MailIcon } from './Icons'
+import { GitHubIcon, LinkedInIcon, MailIcon, DownloadIcon } from './Icons'
 import { NewTab } from './NewTab'
 
 const year = new Date().getFullYear()
@@ -30,6 +30,9 @@ export function Footer() {
           <a className="btn" href={profile.links.github} target="_blank" rel="noreferrer">
             <GitHubIcon /> GitHub
             <NewTab />
+          </a>
+          <a className="btn" href="/Daniel-John_Diala_Resume.pdf" download>
+            <DownloadIcon /> Resume (PDF)
           </a>
         </div>
         <p className="footer__fine mono" style={stagger(3)}>

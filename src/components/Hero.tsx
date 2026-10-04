@@ -17,9 +17,19 @@ export function Hero() {
   return (
     <section className="hero container" id="top" aria-labelledby="hero-name">
       <div className="hero__main">
-        <p className="eyebrow mono boot" style={boot(1)}>
-          <span className="eyebrow__index">01</span> Operator profile
-        </p>
+        <div className="hero__id boot" style={boot(1)}>
+          <img
+            className="hero__photo"
+            src="/media/headshot.jpg"
+            width={88}
+            height={88}
+            alt={`Photo of ${profile.name}`}
+            decoding="async"
+          />
+          <p className="eyebrow mono">
+            <span className="eyebrow__index">01</span> Operator profile
+          </p>
+        </div>
         <h1 className="hero__name boot" id="hero-name" style={boot(2)}>
           {first}
           <br />

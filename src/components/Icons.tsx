@@ -49,6 +49,14 @@ export function ArrowUpRightIcon({ title }: IconProps) {
   )
 }
 
+export function DownloadIcon({ title }: IconProps) {
+  return (
+    <svg {...base} {...a11y(title)}>
+      <path d="M12 4v11M7 10.5l5 4.5 5-4.5M5 20h14" />
+    </svg>
+  )
+}
+
 export function LockIcon({ title }: IconProps) {
   return (
     <svg {...base} {...a11y(title)}>

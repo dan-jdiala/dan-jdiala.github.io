@@ -121,6 +121,24 @@
   margin-right: 10px;
   color: var(--amber);
 }
+.hero__id {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.hero__id .eyebrow {
+  margin: 0;
+}
+.hero__photo {
+  flex: none;
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
 .hero__name {
   margin: 0;
   font-family: var(--font-display);
@@ -976,6 +994,14 @@ details[open] .log__toggle::before {
   .status-chip__label,
   .status-tools {
     display: none;
+  }
+  .hero__photo {
+    width: 64px;
+    height: 64px;
+  }
+  .hero__id {
+    gap: 14px;
+    margin-bottom: 18px;
   }
   /* The readout repeats the hero on phones; hiding it brings projects up a screen. */
   .hero__readout,
