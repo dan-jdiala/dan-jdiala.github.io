@@ -128,7 +128,7 @@ export const systems: SystemProject[] = [
     facts: [
       "Covers Anthropic's Claude Certified Architect – Foundations exam: 30 lessons, 30 study decks, 10 guided labs, 180 practice questions, and two timed 60-question practice exams.",
       'Keeps timed exam rehearsal separate from everyday practice, so a mock exam never distorts a student’s mastery tracking, and ties every lesson to the published exam blueprint.',
-      'Deployed on AWS EC2; covered by 2,000+ Vitest unit tests and Playwright end-to-end tests, including automated accessibility checks.',
+      'Hosted on AWS by Professor Qu at monmouthaiteaching.com; covered by 2,000+ Vitest unit tests and Playwright end-to-end tests, including automated accessibility checks.',
       'Co-authored with William Judd.',
     ],
     links: [{ label: 'Open live site', href: 'https://monmouthaiteaching.com/ccarf' }],
