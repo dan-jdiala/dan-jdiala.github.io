@@ -215,15 +215,43 @@
   padding-top: 12px;
   font-size: 0.9375rem;
 }
+/* A clear button: filled pill, arrow that flips when open. */
 .details summary {
   display: inline-flex;
   align-items: center;
-  min-height: 40px;
-  font-weight: 600;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--chip);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+  font-weight: 700;
+  list-style: none;
   cursor: pointer;
+  user-select: none;
+  transition:
+    background 0.15s,
+    box-shadow 0.15s;
 }
-.details summary::marker {
-  color: var(--red);
+.details summary::-webkit-details-marker {
+  display: none;
+}
+.details summary::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  margin-top: -4px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s;
+}
+.details[open] summary::after {
+  margin-top: 4px;
+  transform: rotate(-135deg);
+}
+.details summary:hover {
+  box-shadow: inset 0 0 0 2px var(--ink);
 }
 .details__facts {
   margin: 6px 0 0;
@@ -250,8 +278,13 @@
 .details--light {
   border-top-color: rgba(255, 255, 255, 0.3);
 }
-.details--light summary::marker {
-  color: #ffffff;
+.details--light summary {
+  background: #ffffff;
+  box-shadow: none;
+  color: var(--red);
+}
+.details--light summary:hover {
+  box-shadow: inset 0 0 0 2px #17181c;
 }
 .details--light .details__facts,
 .details--light .details__stack,
