@@ -54,8 +54,9 @@ export function PulseNetCard({ project }: { project: SystemProject }) {
           <Scene t={t} narrow={narrow} />
           <div className="pulse-card__cta">
             <p>
-              Every few seconds, one hospital (shown in red) sends fake numbers on purpose. Pulse-Net goes with the middle value
-              instead of the average, so one fake report can&rsquo;t throw off the result. Now you try.
+              Every few seconds, one hospital (shown in red) sends fake numbers on purpose. Pulse-Net lines up all five reports
+              and takes the one in the middle instead of averaging them, so one fake report can&rsquo;t throw off the result. Now
+              you try.
             </p>
             <button type="button" className="btn btn--light" onClick={() => setMode('play')}>
               Take control
