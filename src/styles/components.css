@@ -101,6 +101,33 @@
   color: var(--amber);
   border-color: var(--line-strong);
 }
+/* Resume stays one tap away while scrolling, on every screen size. */
+.bar-resume {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 4px 12px;
+  border: 1px solid var(--amber);
+  border-radius: var(--radius);
+  color: var(--amber);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.bar-resume:hover {
+  background: var(--amber);
+  color: var(--bg-deep);
+}
+.bar-resume svg {
+  width: 14px;
+  height: 14px;
+}
 
 /* ================= Hero ================= */
 .hero {
@@ -163,6 +190,12 @@
   color: var(--text-soft);
   font-size: var(--step-1);
   line-height: 1.6;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
 }
 
 .hero__readout {
@@ -994,6 +1027,13 @@ details[open] .log__toggle::before {
   .status-chip__label,
   .status-tools {
     display: none;
+  }
+  /* Let the chip truncate so the Resume button keeps its place on the first row. */
+  .status-chip {
+    flex: 1 1 0;
+  }
+  .bar-resume {
+    padding: 4px 10px;
   }
   .hero__photo {
     width: 64px;

@@ -10,6 +10,7 @@ export type Profile = {
   summary: string
   email: string
   links: { linkedin: string; github: string }
+  resume: string
 }
 
 export type Telemetry = {
@@ -83,6 +84,7 @@ export const profile: Profile = {
     linkedin: 'https://www.linkedin.com/in/daniel-john-diala',
     github: 'https://github.com/dan-jdiala',
   },
+  resume: '/Daniel-John_Diala_Resume.pdf',
 }
 
 export const telemetry: Telemetry[] = [

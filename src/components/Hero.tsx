@@ -1,5 +1,6 @@
 import { education, profile } from '../data/site'
 import { boot } from '../lib/style'
+import { DownloadIcon, MailIcon } from './Icons'
 
 const readout = [
   { key: 'Education', value: `${education.school} · ’29` },
@@ -41,6 +42,14 @@ export function Hero() {
         <p className="hero__summary boot" style={boot(4)}>
           {profile.summary}
         </p>
+        <div className="hero__actions boot" style={boot(5)}>
+          <a className="btn btn--primary" href={profile.resume} download>
+            <DownloadIcon /> Download resume (PDF)
+          </a>
+          <a className="btn" href={`mailto:${profile.email}`}>
+            <MailIcon /> Email me
+          </a>
+        </div>
       </div>
 
       <div className="hero__readout panel boot" style={boot(4)} role="group" aria-label="Profile summary">

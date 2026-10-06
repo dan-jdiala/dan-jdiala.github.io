@@ -1,7 +1,7 @@
 import { profile } from '../data/site'
 import { useClock } from '../hooks/useClock'
 import { boot } from '../lib/style'
-import { GitHubIcon, LinkedInIcon, MailIcon } from './Icons'
+import { DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon } from './Icons'
 import { NewTab } from './NewTab'
 
 const nav = [
@@ -35,6 +35,10 @@ export function StatusBar() {
             </a>
           ))}
         </nav>
+
+        <a className="bar-resume" href={profile.resume} download>
+          <DownloadIcon /> Resume
+        </a>
 
         <div className="status-tools">
           <span className="clock mono" aria-hidden="true">

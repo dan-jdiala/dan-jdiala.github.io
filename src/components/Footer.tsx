@@ -31,7 +31,7 @@ export function Footer() {
             <GitHubIcon /> GitHub
             <NewTab />
           </a>
-          <a className="btn" href="/Daniel-John_Diala_Resume.pdf" download>
+          <a className="btn" href={profile.resume} download>
             <DownloadIcon /> Resume (PDF)
           </a>
         </div>
