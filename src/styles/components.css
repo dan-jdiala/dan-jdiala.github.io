@@ -208,6 +208,12 @@
   color: var(--night-muted);
 }
 
+/* Cards in a row share a height while closed. Once a "How it's built" opens, the
+   neighbours keep their own height instead of stretching into an empty block. */
+.bento:has(.details[open]) > .card {
+  align-self: start;
+}
+
 /* ================= Project details ================= */
 .details {
   margin-top: 16px;
