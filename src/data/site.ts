@@ -97,7 +97,7 @@ export const systems: SystemProject[] = [
     facts: [
       'Hospital edge nodes train a PyTorch model on local (simulated) patient data and send only Ed25519-signed, differentially private updates (DP-SGD, ε = 1.0 per round, with a tracked lifetime privacy budget), never patient records; the coordinator merges them with a norm-clipped coordinate-wise median to resist poisoning.',
       'In production mode the update path fails closed: enrolled signing keys, signature checks, a durable nonce ledger against replays, and key revocation mean a forged or repeated submission is never merged.',
-      'A transformer trained with supervised contrastive loss classifies 16 pathogen profiles at 83.6% validation accuracy on synthetic data and flags possible novel pathogens by their embedding distance from known classes.',
+      'A transformer trained with cross-entropy, supervised contrastive loss, and a fill-in-the-missing-symptoms objective classifies 16 synthetic disease profiles at 85.5% held-out accuracy, and flags possible new diseases by how far they sit from the known ones.',
       'JWT auth with role-based access control, 23 SQLAlchemy models with hand-written SQL migrations, optional mutual TLS with CRL/OCSP revocation, CDC wastewater and NCBI GenBank feeds, and a React dashboard with an outbreak map.',
     ],
     links: [],
