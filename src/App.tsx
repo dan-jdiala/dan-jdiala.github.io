@@ -1,28 +1,24 @@
-import { Capabilities } from './components/Capabilities'
-import { EducationPanel } from './components/EducationPanel'
-import { EventLog } from './components/EventLog'
+import { Education } from './components/Education'
+import { Experience } from './components/Experience'
 import { Footer } from './components/Footer'
+import { Header } from './components/Header'
 import { Hero } from './components/Hero'
-import { LatticeBackground } from './components/LatticeBackground'
-import { StatusBar } from './components/StatusBar'
-import { Systems } from './components/Systems'
-import { TelemetryTiles } from './components/TelemetryTiles'
+import { Projects } from './components/Projects'
+import { Skills } from './components/Skills'
 
 export default function App() {
   return (
     <>
-      <LatticeBackground />
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <StatusBar />
+      <Header />
       <main id="main" tabIndex={-1}>
         <Hero />
-        <TelemetryTiles />
-        <Systems />
-        <EventLog />
-        <Capabilities />
-        <EducationPanel />
+        <Projects />
+        <Experience />
+        <Skills />
+        <Education />
       </main>
       <Footer />
     </>

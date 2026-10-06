@@ -6,18 +6,10 @@ export type Link = { label: string; href: string }
 export type Profile = {
   name: string
   role: string
-  status: string
-  summary: string
+  summary: string[]
   email: string
   links: { linkedin: string; github: string }
   resume: string
-}
-
-export type Telemetry = {
-  id: string
-  value: string
-  label: string
-  detail: string
 }
 
 export type SystemStatus = 'live' | 'active' | 'open-source'
@@ -25,6 +17,8 @@ export type SystemStatus = 'live' | 'active' | 'open-source'
 export type Stat = { value: string; label: string }
 
 export type Media = { src: string; still: string; alt: string; width: number; height: number }
+
+export type Screenshot = { src: string; alt: string; width: number; height: number }
 
 export type SystemProject = {
   id: string
@@ -39,8 +33,7 @@ export type SystemProject = {
   note?: string
   stats?: Stat[]
   media?: Media
-  flagship?: boolean
-  wide?: boolean
+  screenshot?: Screenshot
 }
 
 export type MinorProject = {
@@ -75,10 +68,11 @@ export type Education = {
 
 export const profile: Profile = {
   name: 'Daniel-John Diala',
-  role: 'Software Engineering Student @ Monmouth University · 4.0 GPA',
-  status: 'Undergraduate Student Researcher',
-  summary:
-    "I'm an undergraduate Software Engineering student who builds real-world projects end to end, from ML systems and data pipelines to websites, and I'm looking to eventually expand into mobile apps and hardware.",
+  role: 'Software engineering student at Monmouth University',
+  summary: [
+    "I study software engineering at Monmouth University (4.0 GPA, Honors School), where I'm also an undergraduate research assistant and a teaching assistant for the AI Literacy course.",
+    "I like building things all the way through, from the model or the database to the page people use. Two of my projects are live: a study site for the Claude Certified Architect exam and a browser playground for a research type checker. Next I'd like to try mobile apps and hardware.",
+  ],
   email: 's1398883@monmouth.edu',
   links: {
     linkedin: 'https://www.linkedin.com/in/daniel-john-diala',
@@ -86,13 +80,6 @@ export const profile: Profile = {
   },
   resume: '/Daniel-John_Diala_Resume.pdf',
 }
-
-export const telemetry: Telemetry[] = [
-  { id: 'gpa', value: '4.0', label: 'GPA', detail: 'B.S. Software Engineering, Class of 2029' },
-  { id: 'live', value: '2', label: 'live web apps', detail: 'Study app + GArel Playground, on AWS' },
-  { id: 'commits', value: '860+', label: 'commits', detail: 'Pulse-Net, GArel research, and the study web app' },
-  { id: 'ncl', value: 'Top 4%', label: 'NCL team rank', detail: '127 of 3,638 teams, Spring 2026' },
-]
 
 export const systems: SystemProject[] = [
   {
@@ -117,7 +104,6 @@ export const systems: SystemProject[] = [
       { value: 'ε 1.0', label: 'privacy per round' },
       { value: '1,500+', label: 'pytest tests' },
     ],
-    flagship: true,
   },
   {
     id: 'ccarf',
@@ -134,6 +120,12 @@ export const systems: SystemProject[] = [
       'Co-authored with William Judd.',
     ],
     links: [{ label: 'Open live site', href: 'https://monmouthaiteaching.com/ccarf' }],
+    screenshot: {
+      src: '/media/ccarf.webp',
+      alt: 'Dashboard of the study web app: the Claude Certified Architect – Foundations title, a Start here card, and a prompt to begin with task 1.1.',
+      width: 1120,
+      height: 630,
+    },
   },
   {
     id: 'garel',
@@ -149,6 +141,12 @@ export const systems: SystemProject[] = [
       'FastAPI backend runs the checker as a sandboxed subprocess (time caps, rate limiting, read-only, capability-dropped containers on an internal network); Playwright end-to-end suites cover the UI.',
     ],
     links: [{ label: 'Open live site', href: 'https://relationalreasoning.com/garel/' }],
+    screenshot: {
+      src: '/media/garel.webp',
+      alt: 'The playground: editors for two programs and a cost judgment on the left, and a result panel with a step-by-step trace of how the check ran on the right.',
+      width: 1120,
+      height: 630,
+    },
   },
   {
     id: 'sentiment',
@@ -171,7 +169,6 @@ export const systems: SystemProject[] = [
       width: 880,
       height: 550,
     },
-    wide: true,
   },
 ]
 

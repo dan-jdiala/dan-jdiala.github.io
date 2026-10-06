@@ -19,11 +19,10 @@ html = html.replace(mount, `<div id="root">${appHtml}</div>`)
 html = html.replace(/\s*<noscript>[\s\S]*?<\/noscript>/, '')
 
 // Production-only CSP (the dev server needs inline scripts for hot reload).
-// style-src allows inline style attributes, which carry animation stagger variables.
 const csp = [
   "default-src 'self'",
   "script-src 'self'",
-  "style-src 'self' 'unsafe-inline'",
+  "style-src 'self'",
   "img-src 'self' data:",
   "font-src 'self'",
   "media-src 'self'",
