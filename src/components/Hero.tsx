@@ -28,6 +28,17 @@ export function Hero() {
         </p>
       ))}
 
+      <dl className="hero__status">
+        <div>
+          <dt>Right now</dt>
+          <dd>{profile.now}</dd>
+        </div>
+        <div>
+          <dt>Looking for</dt>
+          <dd>{profile.seeking}</dd>
+        </div>
+      </dl>
+
       <div className="hero__actions">
         <a className="btn btn--primary" href={profile.resume} download>
           <DownloadIcon /> Download resume (PDF)

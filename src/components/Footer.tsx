@@ -7,11 +7,12 @@ const year = new Date().getFullYear()
 export function Footer() {
   return (
     <footer className="footer container" id="contact" aria-labelledby="contact-title">
-      <h2 className="section-title" id="contact-title">
-        Contact
+      <h2 className="footer__title" id="contact-title">
+        <span className="visually-hidden">Contact: </span>
+        Hiring or interested in building with me? <em>Let’s talk.</em>
       </h2>
       <p className="footer__text">
-        Email me at{' '}
+        I’m looking for software, ML, or data internships for 2027. Email me at{' '}
         <a className="text-link" href={`mailto:${profile.email}`}>
           {profile.email}
         </a>

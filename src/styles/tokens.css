@@ -8,11 +8,12 @@
   --muted: #66666b;
   --line: #e3e1dc;
   --line-strong: #c9c6bf;
-  --link: #1f56b3;
-  --button-bg: #1c1c1e;
-  --button-text: #ffffff;
-  --button-hover: #3a3a3c;
+  --link: #9a5300;
+  --accent: #f0a83a;
+  --accent-hover: #e39a2a;
+  --accent-text: #1c1c1e;
 
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
   --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --step--1: 0.875rem;
@@ -36,9 +37,9 @@
     --muted: #a1a1a8;
     --line: #2e2e31;
     --line-strong: #46464b;
-    --link: #8db4f5;
-    --button-bg: #ececee;
-    --button-text: #161617;
-    --button-hover: #d0d0d4;
+    --link: #f2b25c;
+    --accent: #f2b25c;
+    --accent-hover: #f6c27a;
+    --accent-text: #161617;
   }
 }

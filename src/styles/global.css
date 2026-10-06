@@ -58,8 +58,8 @@ main:focus {
   top: -48px;
   z-index: 200;
   padding: 8px 14px;
-  background: var(--button-bg);
-  color: var(--button-text);
+  background: var(--accent);
+  color: var(--accent-text);
   font-size: var(--step--1);
   text-decoration: none;
   transition: top 0.2s;
@@ -121,14 +121,14 @@ main:focus {
   border-color: var(--text);
 }
 .btn--primary {
-  background: var(--button-bg);
-  border-color: var(--button-bg);
-  color: var(--button-text);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
   font-weight: 600;
 }
 .btn--primary:hover {
-  background: var(--button-hover);
-  border-color: var(--button-hover);
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 .btn svg {
   width: 16px;

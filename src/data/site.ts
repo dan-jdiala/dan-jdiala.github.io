@@ -7,6 +7,8 @@ export type Profile = {
   name: string
   role: string
   summary: string[]
+  now: string
+  seeking: string
   email: string
   links: { linkedin: string; github: string }
   resume: string
@@ -73,6 +75,8 @@ export const profile: Profile = {
     "I study software engineering at Monmouth University (4.0 GPA, Honors School), where I'm also an undergraduate research assistant and a teaching assistant for the AI Literacy course.",
     "I like building things all the way through, from the model or the database to the page people use. Two of my projects are live: a study site for the Claude Certified Architect exam and a browser playground for a research type checker. Next I'd like to try mobile apps and hardware.",
   ],
+  now: "Evaluating CHC- and SMT-solver approaches to scale GArel's analysis, building Pulse-Net, and TA'ing AI Literacy.",
+  seeking: 'Software, ML, or data internships for 2027.',
   email: 's1398883@monmouth.edu',
   links: {
     linkedin: 'https://www.linkedin.com/in/daniel-john-diala',
