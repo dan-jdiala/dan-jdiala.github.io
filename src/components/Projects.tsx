@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { moreProjects, systems, type SystemProject, type SystemStatus } from '../data/site'
 import { ArrowUpRightIcon } from './Icons'
 import { NewTab } from './NewTab'
+import { PoisoningDemo } from './PoisoningDemo'
 import { Recording } from './Recording'
 import { Section } from './Section'
 
@@ -54,6 +55,7 @@ function Project({ project }: { project: SystemProject }) {
       )}
       {project.media && <Recording media={project.media} />}
       {project.id === 'pulse-net' && <PulseNetFlow />}
+      {project.id === 'pulse-net' && <PoisoningDemo />}
 
       <ul className={`project__facts${expanded ? ' is-expanded' : ''}`} id={`${titleId}-facts`}>
         {project.facts.map((fact, i) => (

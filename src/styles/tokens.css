@@ -12,6 +12,7 @@
   --accent: #f0a83a;
   --accent-hover: #e39a2a;
   --accent-text: #1c1c1e;
+  --danger: #b42318;
 
   --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
   --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -41,5 +42,6 @@
     --accent: #f2b25c;
     --accent-hover: #f6c27a;
     --accent-text: #161617;
+    --danger: #ff8a7a;
   }
 }

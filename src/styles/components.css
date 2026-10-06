@@ -205,6 +205,157 @@
   color: var(--muted);
 }
 
+/* Pulse-Net poisoning demo */
+.demo {
+  margin: 16px 0 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.demo figcaption {
+  display: grid;
+  gap: 2px;
+}
+.demo__title {
+  font-weight: 600;
+}
+.demo__lede,
+.demo__fine {
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+.demo__plot {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 12px;
+  overflow: visible;
+  font-family: var(--font-body);
+}
+.demo__band {
+  fill: var(--accent);
+  opacity: 0.16;
+}
+.demo__axis {
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+.demo__tick {
+  fill: var(--muted);
+  font-size: 12px;
+}
+.demo__mean {
+  stroke: var(--danger);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+}
+.demo__mean-label {
+  fill: var(--danger);
+  font-size: 13px;
+  font-weight: 600;
+}
+.demo__median {
+  stroke: var(--link);
+  stroke-width: 3;
+}
+.demo__median-label {
+  fill: var(--link);
+  font-size: 13px;
+  font-weight: 600;
+}
+.demo__dot circle {
+  fill: var(--text-soft);
+}
+.demo__dot text,
+.demo__mean-label,
+.demo__median-label {
+  /* Halo so labels stay readable where they cross a marker line. */
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+.demo__dot text {
+  fill: var(--muted);
+  font-size: 12px;
+}
+.demo__dot--attacker circle {
+  fill: var(--danger);
+}
+.demo__dot--attacker text {
+  fill: var(--danger);
+  font-weight: 600;
+}
+/* Supported in current browsers; elsewhere the dots simply jump. */
+.demo__plot circle,
+.demo__plot line,
+.demo__plot text {
+  transition:
+    cx 0.25s ease,
+    x 0.25s ease,
+    x1 0.25s ease,
+    x2 0.25s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo__plot circle,
+  .demo__plot line,
+  .demo__plot text {
+    transition: none;
+  }
+}
+.demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: 12px;
+}
+.demo__hospitals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.demo__toggle {
+  min-height: 40px;
+  padding: 6px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--step--1);
+  cursor: pointer;
+}
+.demo__toggle:hover {
+  border-color: var(--text);
+}
+.demo__toggle[aria-pressed='true'] {
+  border-color: var(--danger);
+  color: var(--danger);
+  font-weight: 600;
+}
+.demo__slider {
+  display: flex;
+  flex: 1 1 200px;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--step--1);
+  color: var(--text-soft);
+}
+.demo__slider input {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--danger);
+}
+.demo__verdict {
+  margin: 12px 0 0;
+  color: var(--text-soft);
+}
+.demo__fine {
+  margin: 6px 0 0;
+}
+
 /* Smaller projects */
 .more {
   margin-top: 40px;
