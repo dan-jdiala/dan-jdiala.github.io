@@ -72,8 +72,8 @@ export const profile: Profile = {
   name: 'Daniel-John Diala',
   role: 'Software engineering student at Monmouth University',
   summary: [
-    "I study software engineering at Monmouth University (4.0 GPA, Honors School), where I'm also an undergraduate research assistant and a teaching assistant for the AI Literacy course.",
-    "I like building things all the way through, from the model or the database to the page people use. Two of my projects are live: a study site for the Claude Certified Architect exam and a browser playground for a research type checker. Next I'd like to try mobile apps and hardware.",
+    "I'm a software engineering student at Monmouth University (4.0 GPA, Honors School). I'm also a teaching assistant for the university's new AI Literacy course and an undergraduate research assistant working on scaling and hardening GArel, a research type checker.",
+    "I like building things all the way through, from the model or the database to the page people use. Two of my projects are live: a study site for the Claude Certified Architect exam and a browser playground for that type checker. You can test a third, Pulse-Net, yourself below. Next I'd like to try mobile apps and hardware.",
   ],
   now: "Evaluating CHC- and SMT-solver approaches to scale GArel's analysis, building Pulse-Net, and TA'ing AI Literacy.",
   seeking: 'Software, ML, or data internships for 2027.',

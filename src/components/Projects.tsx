@@ -1,166 +1,79 @@
-import { useState } from 'react'
-import { moreProjects, systems, type SystemProject, type SystemStatus } from '../data/site'
+import { moreProjects, systems, type SystemProject } from '../data/site'
 import { ArrowUpRightIcon } from './Icons'
 import { NewTab } from './NewTab'
-import { PoisoningDemo } from './PoisoningDemo'
-import { Recording } from './Recording'
-import { Section } from './Section'
+import { ProjectDetails } from './ProjectDetails'
+import { PulseNetCard } from './PulseNetCard'
+import { SentimentCard } from './SentimentCard'
 
-const statusLabel: Record<SystemStatus, string> = {
-  live: 'Live',
-  active: 'In progress',
-  'open-source': 'Open source',
-}
+const byId = (id: string) => systems.find((p) => p.id === id)
 
 export function Projects() {
+  const pulse = byId('pulse-net')
+  const sentiment = byId('sentiment')
+  const shots = systems.filter((p) => p.screenshot)
+
   return (
-    <Section id="projects" title="Projects">
-      <div className="projects">
-        {systems.map((project) => (
-          <Project key={project.id} project={project} />
-        ))}
+    <section className="container section" id="projects" aria-labelledby="projects-title">
+      <div className="section__head">
+        <h2 className="section__title" id="projects-title">
+          Projects
+        </h2>
+        <p className="section__sub">Two of them you can play with right here.</p>
       </div>
-      {moreProjects.length > 0 && <MoreProjects />}
-    </Section>
+      <div className="bento projects">
+        {pulse && <PulseNetCard project={pulse} />}
+        {sentiment && <SentimentCard project={sentiment} />}
+        {shots.map((project) => (
+          <ShotCard key={project.id} project={project} />
+        ))}
+        {moreProjects.length > 0 && <MoreProjects />}
+      </div>
+    </section>
   )
 }
 
-const PHONE_FACTS = 2
-
-function Project({ project }: { project: SystemProject }) {
-  const titleId = `project-${project.id}`
-  const [expanded, setExpanded] = useState(false)
-  const extra = project.facts.length - PHONE_FACTS
-  const meta = [statusLabel[project.status], ...project.tags, project.period]
-  const hasMedia = Boolean(project.screenshot || project.media)
-
-  // On laptops, a screenshot or video sits beside the text; on phones everything stacks.
+// A live web app: a screenshot, what it is, and a link to try it.
+function ShotCard({ project }: { project: SystemProject }) {
+  const shot = project.screenshot!
+  const live = project.links[0]
   return (
-    <article className={`project${hasMedia ? ' project--media' : ''}`} aria-labelledby={titleId}>
-      <div className="project__head">
-        <h3 className="project__name" id={titleId}>
+    <article className="card shot-card" aria-labelledby={`shot-${project.id}`}>
+      <img className="shot-card__img" src={shot.src} alt={shot.alt} width={shot.width} height={shot.height} loading="lazy" decoding="async" />
+      <div className="shot-card__body">
+        <p className="shot-card__meta mono">
+          {project.status === 'live' ? 'Live' : project.status} · {[...project.tags, project.period].join(' · ')}
+        </p>
+        <h3 className="shot-card__name" id={`shot-${project.id}`}>
           {project.name}
         </h3>
-        <p className="project__meta">{meta.join(' · ')}</p>
-        <p className="project__subtitle">{project.subtitle}</p>
-      </div>
-
-      {hasMedia && (
-        <div className="project__media">
-          {project.screenshot && (
-            <figure className="project__shot">
-              <img
-                src={project.screenshot.src}
-                alt={project.screenshot.alt}
-                width={project.screenshot.width}
-                height={project.screenshot.height}
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-          )}
-          {project.media && <Recording media={project.media} />}
-        </div>
-      )}
-      {project.id === 'pulse-net' && (
-        <div className="project__wide">
-          <PulseNetFlow />
-          <PoisoningDemo />
-        </div>
-      )}
-
-      <div className="project__text">
-        <ul className={`project__facts${expanded ? ' is-expanded' : ''}`} id={`${titleId}-facts`}>
-          {project.facts.map((fact, i) => (
-            <li key={fact} className={i >= PHONE_FACTS ? 'fact--extra' : undefined}>
-              {fact}
-            </li>
-          ))}
-        </ul>
-        {extra > 0 && (
-          <button
-            type="button"
-            className="facts-toggle"
-            aria-expanded={expanded}
-            aria-controls={`${titleId}-facts`}
-            onClick={() => setExpanded((e) => !e)}
-          >
-            {expanded ? 'Show less' : `Show ${extra} more`}
-          </button>
+        <p className="shot-card__text">{project.subtitle}</p>
+        {live && (
+          <a className="text-link" href={live.href} target="_blank" rel="noreferrer">
+            {live.label} <ArrowUpRightIcon />
+            <NewTab />
+          </a>
         )}
-
-        {project.stats && <p className="project__stats">{project.stats.map((stat) => `${stat.value} ${stat.label}`).join(' · ')}</p>}
-        <p className="project__stack">
-          <span className="label">Built with</span> {project.stack.join(', ')}
-        </p>
-
-        {(project.links.length > 0 || project.note) && (
-          <div className="project__links">
-            {project.links.map((link) => (
-              <a key={link.href} className="text-link" href={link.href} target="_blank" rel="noreferrer">
-                {link.label} <ArrowUpRightIcon />
-                <NewTab />
-              </a>
-            ))}
-            {project.note && <span className="project__note">{project.note}</span>}
-          </div>
-        )}
+        <ProjectDetails project={project} />
       </div>
     </article>
   )
 }
 
-// Pulse-Net's data flow: what moves between the three parts of the system.
-const flow = [
-  {
-    name: 'Hospital edge nodes',
-    detail: 'Train locally with PyTorch; patient data stays on site.',
-    link: 'signed, private model updates',
-  },
-  {
-    name: 'FastAPI coordinator',
-    detail: 'Verifies and median-aggregates updates, ingests clinical reports and CDC/NCBI feeds, stores state in PostgreSQL.',
-    link: 'hotspots and alerts',
-  },
-  { name: 'React dashboard', detail: 'Outbreak map and alerts.' },
-]
-
-function PulseNetFlow() {
-  return (
-    <figure className="flow">
-      <figcaption className="label">How it fits together</figcaption>
-      <ol className="flow__steps">
-        {flow.map((step) => (
-          <li key={step.name} className="flow__step">
-            <strong>{step.name}.</strong> {step.detail}
-            {step.link && (
-              <span className="flow__link">
-                <span aria-hidden="true">↓ </span>
-                <span className="visually-hidden">Sends </span>
-                {step.link}
-              </span>
-            )}
-          </li>
-        ))}
-      </ol>
-    </figure>
-  )
-}
-
-// Smaller and course projects, linked to the code.
 function MoreProjects() {
   return (
-    <div className="more">
-      <h3 className="more__title">Smaller projects</h3>
-      <ul className="more__list">
+    <article className="card more-card" aria-labelledby="more-title">
+      <h3 className="more-card__title" id="more-title">
+        Smaller projects
+      </h3>
+      <ul className="more-card__list">
         {moreProjects.map((project) => (
-          <li key={project.name} className="more__item">
-            <p className="more__head">
-              <strong>{project.name}</strong> <span className="more__context">({project.context})</span>
+          <li key={project.name}>
+            <p className="more-card__name">
+              {project.name} <span className="more-card__context">· {project.context}</span>
             </p>
-            <p className="more__desc">{project.description}</p>
-            <p className="more__foot">
-              <span className="label">Built with</span> {project.stack.join(', ')} ·{' '}
+            <p className="more-card__desc">{project.description}</p>
+            <p className="more-card__foot">
+              <span className="mono">{project.stack.join(' · ')}</span>
               <a className="text-link" href={project.link.href} target="_blank" rel="noreferrer">
                 {project.link.label} <ArrowUpRightIcon />
                 <span className="visually-hidden"> for {project.name}</span>
@@ -170,6 +83,6 @@ function MoreProjects() {
           </li>
         ))}
       </ul>
-    </div>
+    </article>
   )
 }
