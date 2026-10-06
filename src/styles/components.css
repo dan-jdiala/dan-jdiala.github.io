@@ -208,9 +208,10 @@
   color: var(--night-muted);
 }
 
-/* Cards in a row share a height while closed. Once a "How it's built" opens, the
-   neighbours keep their own height instead of stretching into an empty block. */
-.bento:has(.details[open]) > .card {
+/* Cards in a row share a height only in their untouched state. Once a visitor opens
+   "How it's built", types a review, or takes control of the challenge, each card keeps
+   its own height instead of stretching its neighbour into an empty block. */
+.bento:has(.details[open], .review-input, .challenge) > .card {
   align-self: start;
 }
 
