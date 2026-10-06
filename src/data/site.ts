@@ -118,6 +118,7 @@ export const systems: SystemProject[] = [
     period: 'Aug 2026 – Present',
     stack: ['Next.js', 'TypeScript', 'React', 'Vitest', 'Playwright', 'AWS EC2'],
     facts: [
+      "Built for Monmouth's new AI Literacy course and used by 15+ students preparing for the Claude Certified Architect exam, which the university offers through its academic partnership with Anthropic.",
       "Covers Anthropic's Claude Certified Architect – Foundations exam: 30 lessons, 30 study decks, 10 guided labs, 180 practice questions, and two timed 60-question practice exams.",
       'Keeps timed exam rehearsal separate from everyday practice, so a mock exam never distorts a student’s mastery tracking, and ties every lesson to the published exam blueprint.',
       'Hosted on AWS by Professor Qu at monmouthaiteaching.com; covered by 2,000+ Vitest unit tests and Playwright end-to-end tests, including automated accessibility checks.',
