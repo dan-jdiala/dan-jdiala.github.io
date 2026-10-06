@@ -22,11 +22,13 @@ export function Hero() {
         </div>
       </div>
 
-      {profile.summary.map((paragraph) => (
-        <p className="hero__summary" key={paragraph}>
-          {paragraph}
-        </p>
-      ))}
+      <div className="hero__intro">
+        {profile.summary.map((paragraph) => (
+          <p className="hero__summary" key={paragraph}>
+            {paragraph}
+          </p>
+        ))}
+      </div>
 
       <dl className="hero__status">
         <div>

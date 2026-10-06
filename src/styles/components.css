@@ -571,6 +571,78 @@
   font-size: var(--step--1);
 }
 
+/* ================= Laptops and wider ================= */
+/* Paragraphs keep a readable line length even though the page is wider. */
+.hero__intro,
+.entry__bullets,
+.footer__text,
+.more__desc {
+  max-width: 75ch;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    grid-template-areas:
+      'id id'
+      'intro status'
+      'actions actions';
+    column-gap: 40px;
+    align-items: start;
+  }
+  .hero__id {
+    grid-area: id;
+  }
+  .hero__intro {
+    grid-area: intro;
+  }
+  .hero__actions {
+    grid-area: actions;
+  }
+  .hero__status {
+    grid-area: status;
+    margin-top: 0;
+    gap: 14px;
+    padding: 18px 20px;
+  }
+  .hero__status div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+
+  .project--media {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    grid-template-areas:
+      'head media'
+      'text media';
+    column-gap: 36px;
+    align-items: start;
+  }
+  .project--media .project__head {
+    grid-area: head;
+  }
+  .project--media .project__text {
+    grid-area: text;
+  }
+  .project--media .project__media {
+    grid-area: media;
+  }
+  .project--media .project__media > * {
+    margin-top: 4px;
+  }
+  .project__wide {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+    gap: 20px;
+    align-items: start;
+  }
+  .project:not(.project--media) .project__text {
+    max-width: 80ch;
+  }
+}
+
 /* ================= Responsive ================= */
 @media (max-width: 720px) {
   .site-nav {
