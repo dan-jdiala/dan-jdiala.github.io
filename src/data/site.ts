@@ -133,7 +133,7 @@ export const systems: SystemProject[] = [
   },
   {
     id: 'garel',
-    name: 'GArel Playground',
+    name: 'BiArel Playground',
     subtitle: 'Teaching and research web app for relational cost analysis',
     status: 'live',
     tags: ['Research'],
@@ -228,7 +228,7 @@ export const events: LogEvent[] = [
       'Modernized GArel, an OCaml bidirectional type checker (from Qu et al., ICFP 2019) for relational cost analysis.',
       'Fixed drift in a 36-program test corpus, stress-tested the checker to map its limits, and developed one of two independent solution paths.',
       'Currently evaluating CHC- and SMT-solver-based alternatives to scale the analysis.',
-      'Built the GArel Playground web app, hosted on AWS by Professor Qu at relationalreasoning.com, the website of Professor Qu and collaborators.',
+      'Built the BiArel Playground web app, hosted on AWS by Professor Qu at relationalreasoning.com, the website of Professor Qu and collaborators.',
     ],
   },
   {
