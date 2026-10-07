@@ -12,6 +12,7 @@ export function Header() {
     <header className="site-header">
       <div className="container site-header__inner">
         <a className="site-header__name" href="#top">
+          <img className="site-header__logo" src="/logo.svg" width={36} height={36} alt="" />
           DJ Diala<span className="visually-hidden"> (Daniel-John Diala), back to top</span>
         </a>
         <nav className="site-nav" aria-label="Sections">

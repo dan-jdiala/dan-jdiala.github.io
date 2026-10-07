@@ -15,11 +15,27 @@
   height: 100%;
 }
 .site-header__name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   margin-right: auto;
   font-size: 1.125rem;
   font-weight: 800;
   letter-spacing: -0.01em;
   text-decoration: none;
+}
+.site-header__logo {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+/* On the dark page the black tile needs a faint edge to stay a tile. */
+@media (prefers-color-scheme: dark) {
+  .site-header__logo {
+    outline: 1px solid rgba(255, 255, 255, 0.16);
+    outline-offset: -1px;
+  }
 }
 .site-nav {
   display: flex;
