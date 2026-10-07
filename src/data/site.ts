@@ -92,6 +92,7 @@ export const systems: SystemProject[] = [
     id: 'pulse-net',
     name: 'Pulse-Net',
     subtitle: 'Federated pandemic early-warning prototype (synthetic data)',
+    why: "Outbreaks cross hospital lines, but patient records can't. I wanted to see if hospitals could still warn each other early.",
     status: 'active',
     tags: [],
     period: 'Jan 2026 – Present',

@@ -44,6 +44,7 @@ export function PulseNetCard({ project }: { project: SystemProject }) {
       <h3 className="pulse-card__title" id="pulse-title">
         Try to fool Pulse-Net&rsquo;s defense
       </h3>
+      {project.why && <p className="why">{project.why}</p>}
       <p className="pulse-card__lede">
         Five hospitals each send in a report on what they&rsquo;re seeing. If you just average the reports, one fake can skew
         the result. Can you fool Pulse-Net, which takes the middle report instead?
@@ -116,12 +117,9 @@ function Scene({ t, narrow }: { t: number; narrow: boolean }) {
             </text>
           </g>
         ))}
-        <circle className="scene__hub" cx={cx} cy={cy} r={narrow ? 32 : 40} />
-        <text className="scene__hub-label" x={cx} y={cy - 2} textAnchor="middle">
-          middle
-        </text>
-        <text className="scene__hub-sub" x={cx} y={cy + 13} textAnchor="middle">
-          value
+        <circle className="scene__hub" cx={cx} cy={cy} r={narrow ? 41 : 44} />
+        <text className="scene__hub-label" x={cx} y={cy + 4} textAnchor="middle">
+          coordinator
         </text>
         <circle className="scene__packet" cx={cx + 30 + (ax - 24 - cx - 30) * out} cy={cy} r={6} opacity={out > 0 && out < 1 ? 1 : 0} />
         <rect className="scene__alerts" x={ax - 24} y={cy - 26} width={narrow ? 52 : 62} height={52} rx={10} />
