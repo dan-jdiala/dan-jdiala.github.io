@@ -89,6 +89,7 @@ export function SentimentCard({ project }: { project: SystemProject }) {
       <h3 className="sentiment-card__title" id="sentiment-title">
         Write a review. Watch it get scored.
       </h3>
+      {project.why && <p className="why">{project.why}</p>}
 
       {mode === 'watch' ? (
         <>

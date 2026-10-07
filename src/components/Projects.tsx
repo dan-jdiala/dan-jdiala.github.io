@@ -47,6 +47,7 @@ function ShotCard({ project }: { project: SystemProject }) {
           {project.name}
         </h3>
         <p className="shot-card__text">{project.subtitle}</p>
+        {project.why && <p className="why">{project.why}</p>}
         {live && (
           <a className="text-link" href={live.href} target="_blank" rel="noreferrer">
             {live.label} <ArrowUpRightIcon />

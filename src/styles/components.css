@@ -472,6 +472,10 @@
     x1 0.25s ease,
     x2 0.25s ease;
 }
+.challenge__legend text {
+  fill: #3c3e44;
+  font-size: 11px;
+}
 .demo-controls {
   display: flex;
   flex-wrap: wrap;
@@ -693,6 +697,19 @@
   margin: 0;
   color: var(--muted);
   font-size: 0.8125rem;
+}
+
+/* "Why I built it": one quiet line under a project's title. */
+.why {
+  margin: 0 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--amber);
+  color: var(--muted);
+  font-size: 0.9375rem;
+  font-style: italic;
+}
+.sentiment-card .why {
+  margin: 0;
 }
 
 /* ================= Screenshot cards ================= */

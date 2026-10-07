@@ -45,8 +45,8 @@ export function PulseNetCard({ project }: { project: SystemProject }) {
         Try to fool Pulse-Net&rsquo;s defense
       </h3>
       <p className="pulse-card__lede">
-        Five hospitals train locally and send model updates. A plain average is easy to fool. Can you fool the median Pulse-Net
-        actually uses?
+        Five hospitals each send in a report on what they&rsquo;re seeing. If you just average the reports, one fake can skew
+        the result. Can you fool Pulse-Net, which takes the middle report instead?
       </p>
 
       {mode === 'watch' ? (
@@ -88,7 +88,7 @@ function Scene({ t, narrow }: { t: number; narrow: boolean }) {
 
   return (
     <div className="live-scene">
-      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Animation: five hospitals send updates to the coordinator; a poisoned update is outvoted by the median before alerts go out.">
+      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Animation: five hospitals send reports to Pulse-Net. Now and then one sends a fake report, which is ignored because Pulse-Net takes the middle value before sending alerts.">
         {HONEST.map((_, i) => (
           <line key={`l${i}`} className="scene__link" x1={hx} y1={hy(i)} x2={cx} y2={cy} />
         ))}
@@ -118,10 +118,10 @@ function Scene({ t, narrow }: { t: number; narrow: boolean }) {
         ))}
         <circle className="scene__hub" cx={cx} cy={cy} r={narrow ? 32 : 40} />
         <text className="scene__hub-label" x={cx} y={cy - 2} textAnchor="middle">
-          median
+          middle
         </text>
         <text className="scene__hub-sub" x={cx} y={cy + 13} textAnchor="middle">
-          coordinator
+          value
         </text>
         <circle className="scene__packet" cx={cx + 30 + (ax - 24 - cx - 30) * out} cy={cy} r={6} opacity={out > 0 && out < 1 ? 1 : 0} />
         <rect className="scene__alerts" x={ax - 24} y={cy - 26} width={narrow ? 52 : 62} height={52} rx={10} />
@@ -132,7 +132,7 @@ function Scene({ t, narrow }: { t: number; narrow: boolean }) {
           <g className="scene__tag">
             <rect x={cx - 82} y={cy - (narrow ? 64 : 74)} width={164} height={26} rx={13} />
             <text x={cx} y={cy - (narrow ? 47 : 57)} textAnchor="middle">
-              bad update outvoted
+              fake report ignored
             </text>
           </g>
         )}
@@ -168,15 +168,15 @@ function Challenge({ narrow, onBack }: { narrow: boolean; onBack: () => void }) 
   const x = (v: number) => L + (Math.min(v, AXIS_MAX) / AXIS_MAX) * (R - L)
 
   let verdict: string
-  if (goals.average && goals.median) verdict = 'Pulse-Net holds until attackers are the majority (3 of 5). That is the point of using a median.'
-  else if (count >= 3) verdict = 'Attackers now outnumber honest hospitals, so they can move even the median.'
-  else if (goals.average) verdict = 'The plain average is fooled. Pulse-Net’s median still sits with the honest hospitals. How many attackers would it take?'
+  if (goals.average && goals.median) verdict = 'Pulse-Net holds until attackers are the majority (3 of 5). That’s why it takes the middle value instead of the average.'
+  else if (count >= 3) verdict = 'Attackers now outnumber honest hospitals, so even the middle value is fake.'
+  else if (goals.average) verdict = 'The plain average is fooled. Pulse-Net’s middle value still matches the honest hospitals. How many attackers would it take?'
   else if (count === 0) verdict = 'Click a hospital to turn it into an attacker.'
   else verdict = 'Drag the strength up and watch the dashed average line.'
 
   return (
     <div className="challenge">
-      <svg className="challenge__plot" viewBox={`0 0 ${W} ${AXIS_Y + 24}`} role="img" aria-label={`Plain average ${fmt(avg)}, Pulse-Net median ${fmt(med)}.`}>
+      <svg className="challenge__plot" viewBox={`0 0 ${W} ${AXIS_Y + 46}`} role="img" aria-label={`Plain average ${fmt(avg)}, Pulse-Net middle value ${fmt(med)}.`}>
         <rect className="challenge__zone" x={x(RED_ZONE)} y={0} width={R - x(RED_ZONE)} height={AXIS_Y} />
         <text className="challenge__zone-label" x={x(RED_ZONE) + 8} y={16}>
           RED ZONE
@@ -189,6 +189,16 @@ function Challenge({ narrow, onBack }: { narrow: boolean; onBack: () => void }) 
         ))}
         <line className="challenge__median" x1={x(med)} x2={x(med)} y1={22} y2={AXIS_Y} />
         <line className="challenge__mean" x1={x(avg)} x2={x(avg)} y1={22} y2={AXIS_Y} />
+        <g className="challenge__legend" aria-hidden="true">
+          <line className="challenge__median" x1={L} x2={L + 22} y1={AXIS_Y + 36} y2={AXIS_Y + 36} />
+          <text x={L + 28} y={AXIS_Y + 40}>
+            Pulse-Net&rsquo;s middle value
+          </text>
+          <line className="challenge__mean" x1={L + 200} x2={L + 222} y1={AXIS_Y + 36} y2={AXIS_Y + 36} />
+          <text x={L + 228} y={AXIS_Y + 40}>
+            Plain average
+          </text>
+        </g>
         {values.map((v, i) => (
           <circle key={i} className={attackers[i] ? 'challenge__dot challenge__dot--bad' : 'challenge__dot'} cx={x(v)} cy={34 + i * 21} r={attackers[i] ? 8 : 6.5} />
         ))}
@@ -225,7 +235,7 @@ function Challenge({ narrow, onBack }: { narrow: boolean; onBack: () => void }) 
           <span className="visually-hidden">{goals.average ? ' (done)' : ' (not yet)'}</span>
         </p>
         <p className={goals.median ? 'goal goal--done' : 'goal'}>
-          <span aria-hidden="true">{goals.median ? '✓' : '○'}</span> Fool Pulse-Net&rsquo;s median · {fmt(med)}
+          <span aria-hidden="true">{goals.median ? '✓' : '○'}</span> Fool Pulse-Net&rsquo;s middle value · {fmt(med)}
           <span className="visually-hidden">{goals.median ? ' (done)' : ' (not yet)'}</span>
         </p>
       </div>

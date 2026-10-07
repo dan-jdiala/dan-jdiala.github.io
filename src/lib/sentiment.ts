@@ -50,8 +50,6 @@ const EXPLICIT_NEUTRAL_PHRASES = [
 const CONTRAST_WORDS = new Set(['but', 'however', 'although', 'though', 'yet', 'still', 'nonetheless'])
 const MIXED_CONTRAST_PHRASES = [...CONTRAST_WORDS, 'despite', 'on the other hand', 'at the same time']
 
-// The Python list also has "could", "should", "have" and "has", which marks phrases like
-// "I have loved it" as negated. The port leaves those four out.
 const NEGATORS = new Set([
   'not', 'no', 'never', "n't", 'cannot', 'won', 'nothing', 'hardly', 'barely', 'scarcely', 'without', 'neither', 'nor',
 ])

@@ -26,6 +26,8 @@ export type SystemProject = {
   id: string
   name: string
   subtitle: string
+  // One plain sentence on why it exists (optional; Pulse-Net explains itself).
+  why?: string
   status: SystemStatus
   tags: string[]
   period: string
@@ -113,6 +115,7 @@ export const systems: SystemProject[] = [
     id: 'ccarf',
     name: 'Claude Certified Architect Study Web App',
     subtitle: 'Independent exam-prep platform for Monmouth AI Literacy students (not affiliated with Anthropic)',
+    why: 'Built as part of my TA job, so students in the course had one place to prepare for the exam.',
     status: 'live',
     tags: ['Teaching'],
     period: 'Aug 2026 – Present',
@@ -136,6 +139,7 @@ export const systems: SystemProject[] = [
     id: 'garel',
     name: 'BiArel Playground',
     subtitle: 'Teaching and research web app for relational cost analysis',
+    why: 'Built during my research job so anyone can try the type checker and see how it works, with nothing to install.',
     status: 'live',
     tags: ['Research'],
     period: 'Jun 2026 – Present',
@@ -157,6 +161,7 @@ export const systems: SystemProject[] = [
     id: 'sentiment',
     name: 'Sentiment Analysis Tool',
     subtitle: 'NLP review analysis with a REST API and dashboard',
+    why: 'A winter-break challenge: how well can hand-written rules read reviews, without training a model?',
     status: 'open-source',
     tags: [],
     period: 'Dec 2025 – Jan 2026',
