@@ -46,8 +46,9 @@ export function PulseNetCard({ project }: { project: SystemProject }) {
       </h3>
       {project.why && <p className="why">{project.why}</p>}
       <p className="pulse-card__lede">
-        Five hospitals each send in a report on what they&rsquo;re seeing. If you just average the reports, one fake can skew
-        the result. Can you fool Pulse-Net, which takes the middle report instead?
+        Outbreaks cross hospital lines, but patient records can&rsquo;t, so in Pulse-Net five hospitals warn each other by
+        sharing reports. If you just average the reports, one fake can skew the result. Can you fool Pulse-Net, which takes
+        the middle report instead?
       </p>
 
       {mode === 'watch' ? (

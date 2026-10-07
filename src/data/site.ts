@@ -26,7 +26,7 @@ export type SystemProject = {
   id: string
   name: string
   subtitle: string
-  // One plain sentence on why it exists (optional; Pulse-Net explains itself).
+  // One plain sentence on why it exists, when the card doesn't already say so (optional).
   why?: string
   status: SystemStatus
   tags: string[]
@@ -92,7 +92,6 @@ export const systems: SystemProject[] = [
     id: 'pulse-net',
     name: 'Pulse-Net',
     subtitle: 'Federated pandemic early-warning prototype (synthetic data)',
-    why: "Outbreaks cross hospital lines, but patient records can't. I wanted to see if hospitals could still warn each other early.",
     status: 'active',
     tags: [],
     period: 'Jan 2026 – Present',
@@ -116,7 +115,6 @@ export const systems: SystemProject[] = [
     id: 'ccarf',
     name: 'Claude Certified Architect Study Web App',
     subtitle: 'Independent exam-prep platform for Monmouth AI Literacy students (not affiliated with Anthropic)',
-    why: 'Built as part of my TA job, so students in the course had one place to prepare for the exam.',
     status: 'live',
     tags: ['Teaching'],
     period: 'Aug 2026 – Present',
@@ -140,7 +138,6 @@ export const systems: SystemProject[] = [
     id: 'garel',
     name: 'BiArel Playground',
     subtitle: 'Teaching and research web app for relational cost analysis',
-    why: 'Built during my research job so anyone can try the type checker and see how it works, with nothing to install.',
     status: 'live',
     tags: ['Research'],
     period: 'Jun 2026 – Present',
