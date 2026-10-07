@@ -159,7 +159,7 @@ export const systems: SystemProject[] = [
     id: 'sentiment',
     name: 'Sentiment Analysis Tool',
     subtitle: 'NLP review analysis with a REST API and dashboard',
-    why: 'A winter-break challenge: how well can hand-written rules read reviews, without training a model?',
+    why: 'A personal challenge: how well can hand-written rules read reviews, without training a model?',
     status: 'open-source',
     tags: [],
     period: 'Dec 2025 – Jan 2026',
